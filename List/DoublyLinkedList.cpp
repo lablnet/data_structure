@@ -187,12 +187,43 @@ T DoublyLinkedList<T>::removeFIrst() {
 
 template<typename T>
 T DoublyLinkedList<T>::removeLast() {
-    // todo
+    T item = this->tail->data;
+    if (this->head != nullptr) {
+        if (this->head != this->tail) {
+            List<T> *prev = this->tail->prev;
+            delete this->tail;
+            this->tail = prev;
+            this->tail->next = nullptr;
+        } else {
+            delete this->tail;
+            this->head = nullptr;
+            this->tail = nullptr;
+        }
+    }
+    return item;
 }
 
 template<typename T>
 void DoublyLinkedList<T>::remove(int index) {
-    // todo
+    List<T> *list = this->head;
+    int i = 0;
+    List<T> *pre = this->tail->prev;
+    if (this->head != nullptr) {
+        if (this->head != this->tail) {
+            if (index == 0) {
+                this->head = list->next;
+                delete list;
+            } else {
+                while (list != nullptr && index != i) {
+                    pre = list;
+                    i++;
+                    list = list->next;
+                }
+                pre->next = list->next;
+                delete list;
+            }
+        }
+    }
 }
 
 template<typename T>

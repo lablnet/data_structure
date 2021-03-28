@@ -8,7 +8,7 @@
 
 int main() {
     // List
-    //SinglyLinkedList<int> list(1, 2, 3, 4, 5);
+    //DoublyLinkedList<int> list(1, 2, 3, 4, 5);
     DoublyLinkedList<int> list;
 
     list.add(1);
@@ -40,8 +40,8 @@ int main() {
     std::cout << "lastIndexOf(6) " << list.lastIndexOf(6) << std::endl;
     std::cout << "Size " << list.length() << std::endl;
     std::cout << "remove first: " << list.removeFIrst() << std::endl;
-    //std::cout << "remove last: " << list.removeLast() << std::endl;
-    //list.remove(1);
+    std::cout << "remove last: " << list.removeLast() << std::endl;
+    list.remove(3);
     list.display();
 
     // Queue
