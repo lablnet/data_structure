@@ -24,3 +24,4 @@ template<typename T>
 void Queue<T>::display()  {
     return list.display();
 }
+
