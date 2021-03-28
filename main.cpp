@@ -1,8 +1,20 @@
 #include <iostream>
 #include <string>
 #include "List/SinglyLinkedList.cpp"
+//#include "Stack/Stack.cpp"
 
 int main() {
+    // Stack
+    /*Stack<int> s;
+    s.push(1);
+    s.push(2);
+    s.push(3);
+    std::cout << "Size: " << s.size() << std::endl;
+    std::cout << "Peak: " << s.peak() << std::endl;
+    std::cout << "Pop: " << s.pop() << std::endl;
+    s.display();
+    std::cout << "list" << std::endl;*/
+    // List
     //SinglyLinkedList<int> list(1, 2, 3, 4, 5);
     SinglyLinkedList<int> list;
 

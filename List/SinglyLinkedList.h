@@ -205,6 +205,9 @@ class SinglyLinkedList {
          */
         void flush();
 
+        /**
+         * Destructor to flush list.
+         */
         ~SinglyLinkedList()
         {
             this->flush();
