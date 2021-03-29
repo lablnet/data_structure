@@ -50,6 +50,7 @@ int main() {
     std::cout << "remove first: " << list.removeFIrst() << std::endl;
     std::cout << "remove last: " << list.removeLast() << std::endl;
     list.remove(3);
+    list.sort();
     list.display();
 
     // Queue

@@ -273,3 +273,27 @@ void SinglyLinkedList<T>::add(int index, T item) {
         ++this->size;
     }
 }
+
+template <typename T>
+void SinglyLinkedList<T>::sort() {
+    List<T> *list = this->head;
+    auto *next = new List<T>();
+    auto *tmp = new List<T>();
+
+    while (list != nullptr) {
+
+        next = list->next;
+        while (next != nullptr) {
+            if (list->data > next->data) {
+                tmp->data = list->data;
+                list->data = next->data;
+                next->data = tmp->data;
+            }
+            next = next->next;
+        }
+        list = list->next;
+    }
+
+    delete tmp;
+    delete next;
+}

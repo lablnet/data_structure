@@ -204,6 +204,14 @@ class SinglyLinkedList {
         void flush();
 
         /**
+         * Sort the list using insertion sort.
+         *
+         * @since 1.0.0
+         * return void
+         */
+        void sort();
+
+        /**
          * Destructor to flush list.
          */
         ~SinglyLinkedList()
