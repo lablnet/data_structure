@@ -260,7 +260,7 @@ void SinglyLinkedList<T>::add(int index, T item) {
             list = list->next;
             i++;
         }
-        // make temp list.
+
         auto *tmp = new List<T>();
         // list is now point to the pointer before insertion.
         // so next pointer is our place to insert item/data
