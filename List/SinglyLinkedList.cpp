@@ -139,13 +139,9 @@ void SinglyLinkedList<T>::replace(int index, T item) {
 
 template<typename T>
 void SinglyLinkedList<T>::replaceByValue(T old, T item) {
-    List<T> *list = this->head;
-    while (list != nullptr) {
-        if (old == list->data) {
-            list->data = item;
-            return;
-        }
-        list = list->next;
+    int index = this->indexOf(old);
+    if (index != -1) {
+        this->replace(index, item);
     }
 }
 
