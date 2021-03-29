@@ -147,6 +147,7 @@ class DoublyLinkedList {
          * Display all item from list.
          *
          * @since 1.0.0
+         * @purpose DEBUG
          * return void
          */
         void display();

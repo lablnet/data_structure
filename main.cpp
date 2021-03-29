@@ -1,6 +1,6 @@
 #include <iostream>
-#include <string>
-#//include "List/SinglyLinkedList.cpp"
+//#include <string>
+//#include "List/SinglyLinkedList.cpp"
 //#include "Stack/Stack.cpp"
 //#include "Queue/Queue.cpp"
 
@@ -20,17 +20,19 @@ int main() {
     list.add(7);
     list.add(8);
     list.add(9);
+    list.add(5, 101);
+
     // list contains
-    // [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    // [1, 2, 3, 4, 5, 101, 6, 7, 8, 9]
     list.prepend(10);
     list.prepend(11);
     list.prepend(13);
     // list contains
-    // [13, 11, 10, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    // [13, 11, 10, 1, 2, 3, 4, 5, 101, 6, 7, 8, 9]
     list.replace(6, 12);
     list.replaceByValue(12, 13);
     // list contains
-    // [12, 11, 10, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    // [12, 11, 10, 1, 2, 3, 4, 5, 101, 6, 7, 8, 9]
 
     std::cout << "index: 1 " << list.get(1) << std::endl;
 

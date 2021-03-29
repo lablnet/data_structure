@@ -57,9 +57,11 @@ T SinglyLinkedList<T>::getLast() {
 template<typename T>
 void SinglyLinkedList<T>::display() {
     List<T> *list = this->head;
+    int i = 0;
     while (list != nullptr) {
-        std::cout << "item: " << list->data << std::endl;
+        std::cout << "index: " << i <<  " item: " << list->data << std::endl;
         list = list->next;
+        i++;
     }
 }
 
@@ -228,6 +230,34 @@ void SinglyLinkedList<T>::remove(int index) {
 
 template<typename T>
 void SinglyLinkedList<T>::add(int index, T item) {
-    // todo
-}
+    List<T> *list = this->head;
 
+    // if head is empty insert add to first place.
+    if (this->head == nullptr) {
+        this->add(item);
+        return;
+    }
+    // if index is zero or less, prepend it.
+    if (index <= 0) {
+        this->prepend(item);
+        return;
+    } else if (index > this->length() - 1) { // if index is grater then append.
+        this->add(item);
+        return;
+    } else {
+        // if nothing, then find out the pointer before insertion.
+        int i = 0;
+        while (list != nullptr && i < index - 1) {
+            list = list->next;
+            i++;
+        }
+        // make temp list.
+        auto *tmp = new List<T>();
+        // list is now point to the pointer before insertion.
+        // so next pointer is our place to insert item/data
+        tmp->next = list->next;
+        tmp->data = item;
+        // finally update the next items of list.
+        list->next = tmp;
+    }
+}
