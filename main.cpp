@@ -44,6 +44,8 @@ int main() {
     std::cout << "Last: " << list.getLast() << std::endl;
     std::cout << "indexOf(6) " << list.indexOf(6) << std::endl;
     std::cout << "lastIndexOf(6) " << list.lastIndexOf(6) << std::endl;
+    std::cout << "search(6) " << list.search(6) << std::endl;
+
     std::cout << "Size " << list.length() << std::endl;
     std::cout << "remove first: " << list.removeFIrst() << std::endl;
     std::cout << "remove last: " << list.removeLast() << std::endl;

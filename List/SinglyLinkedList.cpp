@@ -161,9 +161,8 @@ void SinglyLinkedList<T>::flush() {
 }
 
 template<typename T>
-T SinglyLinkedList<T>::search(T item) {
-    //todo
-    return nullptr;
+int SinglyLinkedList<T>::search(T item) {
+    return indexOf(item);
 }
 
 template<typename T>

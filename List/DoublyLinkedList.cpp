@@ -163,9 +163,8 @@ void DoublyLinkedList<T>::flush() {
 }
 
 template<typename T>
-T DoublyLinkedList<T>::search(T item) {
-    //todo
-    return nullptr;
+int DoublyLinkedList<T>::search(T item) {
+    return indexOf(item);
 }
 
 template<typename T>

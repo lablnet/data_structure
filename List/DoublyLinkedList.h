@@ -120,10 +120,9 @@ class DoublyLinkedList {
          *
          * @param item item to be find.
          * @since 1.0.0
-         * @todo
-         * return <T>
+         * return int
          */
-        T search (T item);
+        int search (T item);
 
         /**
          * Get the first item from list.
