@@ -1,5 +1,4 @@
 #include "DoublyLinkedList.h"
-#include <iostream>
 
 template<typename T>
 void DoublyLinkedList<T>::add(T item) {

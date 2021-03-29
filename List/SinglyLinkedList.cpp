@@ -1,5 +1,4 @@
 #include "SinglyLinkedList.h"
-#include <iostream>
 
 template<typename T>
 void SinglyLinkedList<T>::add(T item) {
