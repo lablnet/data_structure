@@ -46,9 +46,7 @@ class SinglyLinkedList {
             // Init variable argument list.
             va_start(arguments, items);
             for (int i = 0; i < items; i++) {
-                // need debugging:
-                //std::cout << "inserting: " <<va_arg(arguments, T) << std::endl;
-                //this->add(va_arg(arguments, T));
+                this->add(va_arg(arguments, T));
             }
             // Clean up argument list
             va_end(arguments);

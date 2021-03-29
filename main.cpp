@@ -8,8 +8,12 @@
 
 int main() {
     // List
-    //DoublyLinkedList<int> list(1, 2, 3, 4, 5);
-    DoublyLinkedList<int> list;
+    // the first parameter here is the size.
+    DoublyLinkedList<int> list(3, -1, -2, -3);
+    // list contains
+    // [-1, -2, -3]
+
+    //DoublyLinkedList<int> list;
 
     list.add(1);
     list.add(2);
@@ -23,16 +27,16 @@ int main() {
     list.add(5, 101);
 
     // list contains
-    // [1, 2, 3, 4, 5, 101, 6, 7, 8, 9]
+    // [-1, -2, -3, 1, 2, 3, 4, 5, 101, 6, 7, 8, 9]
     list.prepend(10);
     list.prepend(11);
     list.prepend(13);
     // list contains
-    // [13, 11, 10, 1, 2, 3, 4, 5, 101, 6, 7, 8, 9]
+    // [13, 11, 10, -1, -2, -3, 1, 2, 3, 4, 5, 101, 6, 7, 8, 9]
     list.replace(6, 12);
     list.replaceByValue(12, 13);
     // list contains
-    // [12, 11, 10, 1, 2, 3, 4, 5, 101, 6, 7, 8, 9]
+    // [12, 11, 10, -1, -2, -3, 1, 2, 3, 4, 5, 101, 6, 7, 8, 9]
 
     std::cout << "index: 1 " << list.get(1) << std::endl;
 
