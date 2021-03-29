@@ -216,4 +216,3 @@ class SinglyLinkedList {
 };
 
 #endif //DATA_STRUCTURE_SINGLYLINKEDLIST_H
-

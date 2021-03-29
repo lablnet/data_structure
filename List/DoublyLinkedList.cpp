@@ -15,6 +15,9 @@ void DoublyLinkedList<T>::add(T item) {
     if (this->head == nullptr) {
         this->head = list;
         this->tail = nullptr;
+        // update the size
+        ++this->size;
+
         return;
     }
 
@@ -27,6 +30,9 @@ void DoublyLinkedList<T>::add(T item) {
 
     // update the tail of list.
     this->tail = list;
+
+    // update the size.
+    ++this->size;
 }
 
 template<typename T>
@@ -68,13 +74,6 @@ void DoublyLinkedList<T>::display() {
 
 template<typename T>
 int DoublyLinkedList<T>::length() {
-    List<T> *list = this->head;
-
-    while (list != nullptr) {
-        this->size++;
-        list = list->next;
-    }
-
     return this->size;
 }
 
@@ -120,6 +119,9 @@ void DoublyLinkedList<T>::prepend(T item) {
     if (this->tail == nullptr) {
         this->tail = list;
     }
+
+    // update the size.
+    ++this->size;
 }
 
 template<typename T>
@@ -160,6 +162,9 @@ void DoublyLinkedList<T>::flush() {
 
     this->head = nullptr;
     this->tail = nullptr;
+
+    // update the size.
+    this->size = 0;
 }
 
 template<typename T>
@@ -184,6 +189,9 @@ T DoublyLinkedList<T>::removeFIrst() {
         }
     }
 
+    // update the size.
+    --this->size;
+
     return item;
 }
 
@@ -202,6 +210,9 @@ T DoublyLinkedList<T>::removeLast() {
             this->tail = nullptr;
         }
     }
+    // update the size.
+    --this->size;
+
     return item;
 }
 
@@ -215,6 +226,8 @@ void DoublyLinkedList<T>::remove(int index) {
             if (index == 0) {
                 this->head = list->next;
                 delete list;
+                // update the size.
+                --this->size;
             } else {
                 while (list != nullptr && index != i) {
                     pre = list;
@@ -223,6 +236,8 @@ void DoublyLinkedList<T>::remove(int index) {
                 }
                 pre->next = list->next;
                 delete list;
+                // update the size.
+                --this->size;
             }
         }
     }
@@ -261,6 +276,8 @@ void DoublyLinkedList<T>::add(int index, T item) {
         tmp->prev = list;
         // finally update the next items of list.
         list->next = tmp;
+
+        // update the size.
+        ++this->size;
     }
 }
-

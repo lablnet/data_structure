@@ -28,4 +28,3 @@ template<typename T>
 T Stack<T>::peak() {
     return list.getLast();
 }
-

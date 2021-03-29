@@ -14,4 +14,3 @@ public:
 };
 
 #endif //DATA_STRUCTURE_LIST_H
-

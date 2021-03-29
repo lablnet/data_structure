@@ -14,6 +14,9 @@ void SinglyLinkedList<T>::add(T item) {
     if (this->head == nullptr) {
         this->head = list;
         this->tail = nullptr;
+        // update the size
+        ++this->size;
+
         return;
     }
 
@@ -26,6 +29,9 @@ void SinglyLinkedList<T>::add(T item) {
 
     // update the tail of list.
     this->tail = list;
+
+    // update the size.
+    ++this->size;
 }
 
 template<typename T>
@@ -67,13 +73,6 @@ void SinglyLinkedList<T>::display() {
 
 template<typename T>
 int SinglyLinkedList<T>::length() {
-    List<T> *list = this->head;
-
-    while (list != nullptr) {
-        this->size++;
-        list = list->next;
-    }
-
     return this->size;
 }
 
@@ -118,6 +117,9 @@ void SinglyLinkedList<T>::prepend(T item) {
     if (this->tail == nullptr) {
         this->tail = list;
     }
+
+    // update the size.
+    ++this->size;
 }
 
 template<typename T>
@@ -158,6 +160,9 @@ void SinglyLinkedList<T>::flush() {
 
     this->head = nullptr;
     this->tail = nullptr;
+
+    // update the size.
+    this->size = 0;
 }
 
 template<typename T>
@@ -180,6 +185,8 @@ T SinglyLinkedList<T>::removeFIrst() {
             this->tail = nullptr;
         }
     }
+    // update the size.
+    --this->size;
 
     return item;
 }
@@ -202,6 +209,9 @@ T SinglyLinkedList<T>::removeLast() {
             this->tail = nullptr;
         }
     }
+    // update the size.
+    --this->size;
+
     return item;
 }
 
@@ -215,6 +225,8 @@ void SinglyLinkedList<T>::remove(int index) {
             if (index == 0) {
                 this->head = list->next;
                 delete list;
+                // update the size.
+                --this->size;
             } else {
                 while (list != nullptr && index != i) {
                     pre = list;
@@ -223,6 +235,9 @@ void SinglyLinkedList<T>::remove(int index) {
                 }
                 pre->next = list->next;
                 delete list;
+
+                // update the size.
+                --this->size;
             }
         }
     }
@@ -259,5 +274,8 @@ void SinglyLinkedList<T>::add(int index, T item) {
         tmp->data = item;
         // finally update the next items of list.
         list->next = tmp;
+
+        // update the size.
+        ++this->size;
     }
 }
