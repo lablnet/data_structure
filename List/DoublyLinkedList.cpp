@@ -1,9 +1,10 @@
 #include "DoublyLinkedList.h"
 
 template<typename T>
-void DoublyLinkedList<T>::add(T item) {
+void DoublyLinkedList<T>::add(T item)
+{
     // Get new memory/ Create new list.
-    auto *list = new List<T>(); //List<T> *list = new List<T>();
+    auto *list = new List<T>();
 
     // Set list property.
     list->data = item;
@@ -35,7 +36,8 @@ void DoublyLinkedList<T>::add(T item) {
 }
 
 template<typename T>
-T DoublyLinkedList<T>::get(int index) {
+T DoublyLinkedList<T>::get(int index)
+{
     int i = 0;
     List<T> *list = this->head;
     while (list != nullptr) {
@@ -51,17 +53,20 @@ T DoublyLinkedList<T>::get(int index) {
 }
 
 template<typename T>
-T DoublyLinkedList<T>::getFirst() {
+T DoublyLinkedList<T>::getFirst()
+{
     return this->head->data;
 }
 
 template<typename T>
-T DoublyLinkedList<T>::getLast() {
+T DoublyLinkedList<T>::getLast()
+{
     return this->tail->data;
 }
 
 template<typename T>
-void DoublyLinkedList<T>::display() {
+void DoublyLinkedList<T>::display()
+{
     List<T> *list = this->head;
     int i = 0;
     while (list != nullptr) {
@@ -72,12 +77,14 @@ void DoublyLinkedList<T>::display() {
 }
 
 template<typename T>
-int DoublyLinkedList<T>::length() {
+int DoublyLinkedList<T>::length()
+{
     return this->size;
 }
 
 template<typename T>
-int DoublyLinkedList<T>::indexOf(T item) {
+int DoublyLinkedList<T>::indexOf(T item)
+{
     int index = -1;
     int i = 0;
     List<T> *list = this->head;
@@ -94,7 +101,8 @@ int DoublyLinkedList<T>::indexOf(T item) {
 }
 
 template<typename T>
-int DoublyLinkedList<T>::lastIndexOf(T item) {
+int DoublyLinkedList<T>::lastIndexOf(T item)
+{
     int index = -1;
     int i = 0;
     List<T> *list = this->head;
@@ -108,7 +116,8 @@ int DoublyLinkedList<T>::lastIndexOf(T item) {
 }
 
 template<typename T>
-void DoublyLinkedList<T>::prepend(T item) {
+void DoublyLinkedList<T>::prepend(T item)
+{
     List<T> *list = new List<T>();
     list->data = item;
     list->next = this->head;
@@ -124,7 +133,8 @@ void DoublyLinkedList<T>::prepend(T item) {
 }
 
 template<typename T>
-void DoublyLinkedList<T>::replace(int index, T item) {
+void DoublyLinkedList<T>::replace(int index, T item)
+{
     List<T> *list = this->head;
     int i = 0;
 
@@ -139,7 +149,8 @@ void DoublyLinkedList<T>::replace(int index, T item) {
 }
 
 template<typename T>
-void DoublyLinkedList<T>::replaceByValue(T old, T item) {
+void DoublyLinkedList<T>::replaceByValue(T old, T item)
+{
     int index = this->indexOf(old);
     if (index != -1) {
         this->replace(index, item);
@@ -147,7 +158,8 @@ void DoublyLinkedList<T>::replaceByValue(T old, T item) {
 }
 
 template<typename T>
-void DoublyLinkedList<T>::flush() {
+void DoublyLinkedList<T>::flush()
+{
     List<T> *list = this->head;
     while (list != nullptr) {
         List<T> * tmp = list;
@@ -163,12 +175,14 @@ void DoublyLinkedList<T>::flush() {
 }
 
 template<typename T>
-int DoublyLinkedList<T>::search(T item) {
+int DoublyLinkedList<T>::search(T item)
+{
     return indexOf(item);
 }
 
 template<typename T>
-T DoublyLinkedList<T>::removeFIrst() {
+T DoublyLinkedList<T>::removeFIrst()
+{
     T item = this->head->data;
     if (this->head != nullptr) {
         if (this->head != this->tail) {
@@ -190,7 +204,8 @@ T DoublyLinkedList<T>::removeFIrst() {
 }
 
 template<typename T>
-T DoublyLinkedList<T>::removeLast() {
+T DoublyLinkedList<T>::removeLast()
+{
     T item = this->tail->data;
     if (this->head != nullptr) {
         if (this->head != this->tail) {
@@ -211,7 +226,8 @@ T DoublyLinkedList<T>::removeLast() {
 }
 
 template<typename T>
-void DoublyLinkedList<T>::remove(int index) {
+void DoublyLinkedList<T>::remove(int index)
+{
     List<T> *list = this->head;
     int i = 0;
     List<T> *pre = this->tail->prev;
@@ -238,7 +254,8 @@ void DoublyLinkedList<T>::remove(int index) {
 }
 
 template<typename T>
-void DoublyLinkedList<T>::add(int index, T item) {
+void DoublyLinkedList<T>::add(int index, T item)
+{
     List<T> *list = this->head;
 
     // if head is empty insert add to first place.
@@ -277,7 +294,8 @@ void DoublyLinkedList<T>::add(int index, T item) {
 }
 
 template <typename T>
-void DoublyLinkedList<T>::sort() {
+void DoublyLinkedList<T>::sort()
+{
     List<T> *list = this->head;
     auto *next = new List<T>();
     auto *tmp = new List<T>();

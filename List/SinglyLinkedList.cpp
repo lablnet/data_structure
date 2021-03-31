@@ -1,9 +1,10 @@
 #include "SinglyLinkedList.h"
 
 template<typename T>
-void SinglyLinkedList<T>::add(T item) {
+void SinglyLinkedList<T>::add(T item)
+{
     // Get new memory/ Create new list.
-    auto *list = new List<T>(); //List<T> *list = new List<T>();
+    auto *list = new List<T>();
 
     // Set list property.
     list->data = item;
@@ -34,7 +35,8 @@ void SinglyLinkedList<T>::add(T item) {
 }
 
 template<typename T>
-T SinglyLinkedList<T>::get(int index) {
+T SinglyLinkedList<T>::get(int index)
+{
     int i = 0;
     List<T> *list = this->head;
     while (list != nullptr) {
@@ -50,17 +52,20 @@ T SinglyLinkedList<T>::get(int index) {
 }
 
 template<typename T>
-T SinglyLinkedList<T>::getFirst() {
+T SinglyLinkedList<T>::getFirst()
+{
     return this->head->data;
 }
 
 template<typename T>
-T SinglyLinkedList<T>::getLast() {
+T SinglyLinkedList<T>::getLast()
+{
     return this->tail->data;
 }
 
 template<typename T>
-void SinglyLinkedList<T>::display() {
+void SinglyLinkedList<T>::display()
+{
     List<T> *list = this->head;
     int i = 0;
     while (list != nullptr) {
@@ -71,12 +76,14 @@ void SinglyLinkedList<T>::display() {
 }
 
 template<typename T>
-int SinglyLinkedList<T>::length() {
+int SinglyLinkedList<T>::length()
+{
     return this->size;
 }
 
 template<typename T>
-int SinglyLinkedList<T>::indexOf(T item) {
+int SinglyLinkedList<T>::indexOf(T item)
+{
     int index = -1;
     int i = 0;
     List<T> *list = this->head;
@@ -93,7 +100,8 @@ int SinglyLinkedList<T>::indexOf(T item) {
 }
 
 template<typename T>
-int SinglyLinkedList<T>::lastIndexOf(T item) {
+int SinglyLinkedList<T>::lastIndexOf(T item)
+{
     int index = -1;
     int i = 0;
     List<T> *list = this->head;
@@ -107,7 +115,8 @@ int SinglyLinkedList<T>::lastIndexOf(T item) {
 }
 
 template<typename T>
-void SinglyLinkedList<T>::prepend(T item) {
+void SinglyLinkedList<T>::prepend(T item)
+{
     List<T> *list = new List<T>();
     list->data = item;
     list->next = this->head;
@@ -122,7 +131,8 @@ void SinglyLinkedList<T>::prepend(T item) {
 }
 
 template<typename T>
-void SinglyLinkedList<T>::replace(int index, T item) {
+void SinglyLinkedList<T>::replace(int index, T item)
+{
     List<T> *list = this->head;
     int i = 0;
 
@@ -137,7 +147,8 @@ void SinglyLinkedList<T>::replace(int index, T item) {
 }
 
 template<typename T>
-void SinglyLinkedList<T>::replaceByValue(T old, T item) {
+void SinglyLinkedList<T>::replaceByValue(T old, T item)
+{
     int index = this->indexOf(old);
     if (index != -1) {
         this->replace(index, item);
@@ -145,7 +156,8 @@ void SinglyLinkedList<T>::replaceByValue(T old, T item) {
 }
 
 template<typename T>
-void SinglyLinkedList<T>::flush() {
+void SinglyLinkedList<T>::flush()
+{
     List<T> *list = this->head;
     while (list != nullptr) {
         List<T> * tmp = list;
@@ -161,12 +173,14 @@ void SinglyLinkedList<T>::flush() {
 }
 
 template<typename T>
-int SinglyLinkedList<T>::search(T item) {
+int SinglyLinkedList<T>::search(T item)
+{
     return indexOf(item);
 }
 
 template<typename T>
-T SinglyLinkedList<T>::removeFIrst() {
+T SinglyLinkedList<T>::removeFIrst()
+{
     T item = this->head->data;
     if (this->head != nullptr) {
         if (this->head != this->tail) {
@@ -186,7 +200,8 @@ T SinglyLinkedList<T>::removeFIrst() {
 }
 
 template<typename T>
-T SinglyLinkedList<T>::removeLast() {
+T SinglyLinkedList<T>::removeLast()
+{
     T item = this->tail->data;
     if (this->head != nullptr) {
         if (this->head != this->tail) {
@@ -210,7 +225,8 @@ T SinglyLinkedList<T>::removeLast() {
 }
 
 template<typename T>
-void SinglyLinkedList<T>::remove(int index) {
+void SinglyLinkedList<T>::remove(int index)
+{
     List<T> *list = this->head;
     int i = 0;
     List<T> *pre = nullptr;
@@ -238,7 +254,8 @@ void SinglyLinkedList<T>::remove(int index) {
 }
 
 template<typename T>
-void SinglyLinkedList<T>::add(int index, T item) {
+void SinglyLinkedList<T>::add(int index, T item)
+{
     List<T> *list = this->head;
 
     // if head is empty insert add to first place.
@@ -275,7 +292,8 @@ void SinglyLinkedList<T>::add(int index, T item) {
 }
 
 template <typename T>
-void SinglyLinkedList<T>::sort() {
+void SinglyLinkedList<T>::sort()
+{
     List<T> *list = this->head;
     auto *next = new List<T>();
     auto *tmp = new List<T>();
