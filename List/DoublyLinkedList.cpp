@@ -249,6 +249,10 @@ void DoublyLinkedList<T>::remove(int index)
                 // update the size.
                 --this->size;
             }
+        } else {
+            delete this->head;
+            this->head = nullptr;
+            this->tail = nullptr;
         }
     }
 }
