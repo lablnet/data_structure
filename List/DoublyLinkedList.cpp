@@ -49,7 +49,7 @@ T DoublyLinkedList<T>::get(int index)
         list = list->next;
     }
 
-    return 0;
+    return  T{};
 }
 
 template<typename T>
