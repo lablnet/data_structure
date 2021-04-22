@@ -27,7 +27,7 @@ class Queue {
         * @since 1.0.0
         * @return void
         */
-        void enqueue(T item, int priority);
+        void enqueue(T item, int priority = 0);
 
         /**
          * Remove first item from Queue and return it.

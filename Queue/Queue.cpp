@@ -1,7 +1,7 @@
 #include "Queue.h"
 
 template<typename T>
-void Queue<T>::enqueue(T item, int priority)
+void Queue<T>::enqueue(T item, int priority = 0)
 {
     auto *temp = new QueueItem<T>();
     temp->data = item;
