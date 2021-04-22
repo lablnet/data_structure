@@ -3,12 +3,10 @@
 template<typename T>
 void Queue<T>::enqueue(T item, int priority)
 {
-    auto *temp = (QueueItem<T>*) malloc(sizeof(QueueItem<T>));
+    auto *temp = new QueueItem<T>();
     temp->data = item;
     temp->priority = priority;
-    int size = list.size;
     this->list.add(*temp);
-
 }
 
 template<typename T>
