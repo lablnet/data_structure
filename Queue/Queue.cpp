@@ -1,15 +1,35 @@
 #include "Queue.h"
 
 template<typename T>
-void Queue<T>::enqueue(T item)
+void Queue<T>::enqueue(T item, int priority)
 {
-    list.add(item);
+    auto *temp = (QueueItem<T>*) malloc(sizeof(QueueItem<T>));
+    temp->data = item;
+    temp->priority = priority;
+    int size = list.size;
+    this->list.add(*temp);
+
 }
 
 template<typename T>
 T Queue<T>::dequeue()
 {
-    return list.removeFIrst();
+    QueueItem<T> item;
+    int size = this->list.size;
+    int index = 0;
+    int priority = -1;
+    T data;
+    for (int i = 0; i < size; i++) {
+        item = this->list.get(i);
+        if (priority < item.priority) {
+            index = i;
+            data = item.data;
+            priority = item.priority;
+        }
+    }
+
+    this->list.remove(index);
+    return data;
 }
 
 template<typename T>
@@ -22,10 +42,4 @@ template<typename T>
 bool Queue<T>::isEmpty()
 {
     return list.length() == 0;
-}
-
-template<typename T>
-void Queue<T>::display()
-{
-    return list.display();
 }

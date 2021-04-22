@@ -4,13 +4,21 @@
 
 #ifndef DATA_STRUCTURE_QUEUE_H
 #define DATA_STRUCTURE_QUEUE_H
-#include "../List/SinglyLinkedList.h"
+#include "../List/SinglyLinkedList.cpp"
+
+template<typename T>
+class QueueItem {
+    public:
+        T data;
+        int priority;
+};
 
 template<typename T>
 class Queue {
     private:
         // list.
-        SinglyLinkedList<T> list;
+        SinglyLinkedList<QueueItem<T>> list;
+
     public:
         /**
         * Push an item to Queue.
@@ -19,7 +27,7 @@ class Queue {
         * @since 1.0.0
         * @return void
         */
-        void enqueue(T item);
+        void enqueue(T item, int priority);
 
         /**
          * Remove first item from Queue and return it.
@@ -44,21 +52,6 @@ class Queue {
          * @return int
          */
         int size();
-
-        /**
-         * Display items of Queue.
-         *
-         * @since 1.0.0
-         * @return <T>
-         */
-        void display();
-
-        /**
-         * Destructor to flush Queue.
-         */
-        ~Queue() {
-            list.flush();
-        }
 
 };
 
