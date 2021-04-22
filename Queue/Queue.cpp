@@ -1,7 +1,7 @@
 #include "Queue.h"
 
 template<typename T>
-void Queue<T>::enqueue(T item, int priority = 0)
+void Queue<T>::enqueue(T item, int priority)
 {
     auto *temp = new QueueItem<T>();
     temp->data = item;
@@ -14,20 +14,24 @@ T Queue<T>::dequeue()
 {
     QueueItem<T> item;
     int size = this->list.size;
-    int index = 0;
-    int priority = -1;
-    T data;
-    for (int i = 0; i < size; i++) {
-        item = this->list.get(i);
-        if (priority < item.priority) {
-            index = i;
-            data = item.data;
-            priority = item.priority;
+    if (size == 0) return T{};
+    else if (size == 1) return this->list.removeFIrst().data;
+    else {
+        int index = 0;
+        int priority = -1;
+        T data;
+        for (int i = 0; i < size; i++) {
+            item = this->list.get(i);
+            if (priority < item.priority) {
+                index = i;
+                data = item.data;
+                priority = item.priority;
+            }
         }
-    }
 
-    this->list.remove(index);
-    return data;
+        this->list.remove(index);
+        return data;
+    }
 }
 
 template<typename T>
