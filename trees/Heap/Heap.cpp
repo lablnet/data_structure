@@ -7,7 +7,7 @@
 
 template<typename T>
 int Heap<T>::parent(int i) {
-    return (i / 2);
+    return (i / 2) + 1;
 }
 
 template<typename T>
