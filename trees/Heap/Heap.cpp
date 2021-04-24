@@ -7,12 +7,12 @@
 
 template<typename T>
 int Heap<T>::parent(int i) {
-    return (i / 2) + 1;
+    return (i - 1) / 2;
 }
 
 template<typename T>
 int Heap<T>::left(int i) {
-    return 2 * i + 1;
+    return (2 * i) + 1;
 }
 
 template<typename T>
@@ -44,9 +44,9 @@ void Heap<T>::minHeapify(int i) {
     int l = this->left(i);
     int r = this->right(i);
 
-    if (l <= this->data.size() && this->data[l] < this->data[i]) {
+    if (l < this->data.size() && this->data[l] < this->data[i]) {
         smallest = l;
-    } else if (r <= this->data.size() && this->data[r] < this->data[i]) {
+    } else if (r < this->data.size() && this->data[r] < this->data[i]) {
         smallest = r;
     }
 
@@ -63,7 +63,7 @@ void Heap<T>::insert(T data, HeapType type) {
         return;
     }
     this->data.push_back(data);
-    for (int i = this->data.size() / 2 - 1; i >= 0; i--) {
+    for (int i = this->parent(this->data.size()); i >= 0; i--) {
         if (type == MaxHeap)
             this->maxHeapify(i);
         else
