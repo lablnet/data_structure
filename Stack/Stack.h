@@ -4,7 +4,7 @@
 
 #ifndef DATA_STRUCTURE_STACK_H
 #define DATA_STRUCTURE_STACK_H
-#include "../List/SinglyLinkedList.h"
+#include "../List/SinglyLinkedList.cpp"
 
 template<typename T>
 class Stack {
