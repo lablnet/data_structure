@@ -28,7 +28,8 @@ void Heap<T>::maxHeapify(int i) {
 
     if (l <= this->data.size() && this->data[l] > this->data[i]) {
         largest = l;
-    } else if (r <= this->data.size() && this->data[r] > this->data[i]) {
+    }
+    if (r <= this->data.size() && this->data[r] > this->data[i]) {
         largest = r;
     }
 
@@ -46,7 +47,8 @@ void Heap<T>::minHeapify(int i) {
 
     if (l < this->data.size() && this->data[l] < this->data[i]) {
         smallest = l;
-    } else if (r < this->data.size() && this->data[r] < this->data[i]) {
+    }
+    if (r < this->data.size() && this->data[r] < this->data[i]) {
         smallest = r;
     }
 
