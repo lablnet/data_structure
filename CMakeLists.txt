@@ -7,3 +7,5 @@ add_executable(List main.cpp List/List.h List/SinglyLinkedList.h List/SinglyLink
 add_executable(Heap heap_main.cpp trees/Heap/Heap.h trees/Heap/Heap.cpp)
 add_executable(Queue queue_main.cpp Queue/Queue.h Queue/Queue.cpp List/List.h List/SinglyLinkedList.h List/SinglyLinkedList.cpp)
 add_executable(Stack stack_main.cpp Stack/Stack.h Stack/Stack.cpp List/List.h List/SinglyLinkedList.h List/SinglyLinkedList.cpp)
+add_executable(LinearSearch Algorithm/Searching/LinearSearch.cpp)
+add_executable(BinarySearch Algorithm/Searching/BinarySearch.cpp)
