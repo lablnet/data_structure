@@ -89,11 +89,10 @@ void Heap<T>::print() {
 
 template<typename T>
 void Heap<T>::sort(HeapType type) {
-
     // Step 1 build max|min heap, but we considered we have nearly completed binary tree called heap.
     for (int i = this->data.size() - 1; i > 0; i--) {
-        // move current node to root.
 
+        // move current node to root.
         std::iter_swap(&this->data[0], &this->data[i]);
         this->size = i;
 
@@ -102,5 +101,30 @@ void Heap<T>::sort(HeapType type) {
             this->maxHeapify(0);
         else
             this->minHeapify(0);
+    }
+}
+
+template<typename T>
+T Heap<T>::extract(HeapType type) {
+    T element = this->data[0];
+    this->data.erase(this->data.begin());
+    //this->data[0] = this->data[this->size - 1];
+    this->size--;
+
+    // rebuild the heap.
+    if (type == MaxHeap)
+        this->maxHeapify(0);
+    else
+        this->minHeapify(0);
+
+    return element;
+}
+
+template<typename T>
+void Heap<T>::increaseKey(int i, T item) {
+    this->data[i] = item;
+    while (i > 0 && this->data[this->parent(i)] < this->data[i]) {
+        std::iter_swap(&this->data[i], &this->data[this->parent(i)]);
+        i = this->parent(i);
     }
 }

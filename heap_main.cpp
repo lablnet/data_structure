@@ -7,10 +7,12 @@ int main()
     h.insert(3);
     h.insert(1);
     h.insert(2);
+    h.increaseKey(1, 10);
     std::cout << "MaxHeap : \n";
     //h.sort();
     h.print();
-
+    std::cout << h.extract(MaxHeap) << std::endl;
+    h.print();
 
     Heap<int> h2;
     h2.insert(12, MinHeap);
@@ -19,9 +21,6 @@ int main()
     h2.insert(5, MinHeap);
     h2.insert(6, MinHeap);
     h2.insert(7, MinHeap);
-
-    //std::cout << "MinHeap : \n";
-    //h2.print();
 
     std::cout << "sorting... \n";
     h2.sort(MinHeap);
