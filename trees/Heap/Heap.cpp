@@ -26,10 +26,13 @@ void Heap<T>::maxHeapify(int i) {
     int l = this->left(i);
     int r = this->right(i);
 
-    if (l <= this->data.size() && this->data[l] > this->data[i]) {
+    // if the left child greater then root.
+    if (l < this->size && this->data[l] > this->data[i]) {
         largest = l;
     }
-    if (r <= this->data.size() && this->data[r] > this->data[i]) {
+
+    // if the right child greater then root.
+    if (r < this->size && this->data[r] > this->data[i]) {
         largest = r;
     }
 
@@ -45,10 +48,12 @@ void Heap<T>::minHeapify(int i) {
     int l = this->left(i);
     int r = this->right(i);
 
-    if (l < this->data.size() && this->data[l] < this->data[i]) {
+    // if the left child smaller then root.
+    if (l < this->size && this->data[l] < this->data[i]) {
         smallest = l;
     }
-    if (r < this->data.size() && this->data[r] < this->data[i]) {
+    // if the right child smaller then root.
+    if (r < this->size && this->data[r] < this->data[i]) {
         smallest = r;
     }
 
@@ -61,10 +66,12 @@ template<typename T>
 void Heap<T>::insert(T data, HeapType type) {
     if (this->data.size() == 0) {
         this->data.push_back(data);
+        this->size++;
 
         return;
     }
     this->data.push_back(data);
+    this->size++;
     for (int i = this->parent(this->data.size()); i >= 0; i--) {
         if (type == MaxHeap)
             this->maxHeapify(i);
@@ -82,4 +89,18 @@ void Heap<T>::print() {
 
 template<typename T>
 void Heap<T>::sort(HeapType type) {
+
+    // Step 1 build max|min heap, but we considered we have nearly completed binary tree called heap.
+    for (int i = this->data.size() - 1; i > 0; i--) {
+        // move current node to root.
+
+        std::iter_swap(&this->data[0], &this->data[i]);
+        this->size = i;
+
+        // reduce the heap.
+        if (type == MaxHeap)
+            this->maxHeapify(0);
+        else
+            this->minHeapify(0);
+    }
 }
