@@ -41,16 +41,22 @@ std::vector<T> merge_sort(std::vector<T> arr)
         int mid = arr.size() / 2;
         std::vector<T> left_list;
         std::vector<T> right_list;
+
+        // reserve capacity into vector.
         left_list.reserve(mid / 2);
         right_list.reserve(mid / 2);
+
+        // build left and right list.
         for (int i = 0; i < mid; i++) {
             left_list.push_back(arr[i]);
         }
         for (int i = mid; i < arr.size(); i++) {
             right_list.push_back(arr[i]);
         }
+
         std::vector<T> left = merge_sort(left_list);
         std::vector<T> right = merge_sort(right_list);
+
         return merge(left, right);
     }
 }
