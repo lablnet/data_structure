@@ -5,6 +5,7 @@
 #ifndef DOUBLYLINKEDLIST_H_HEAP_H
 #define DOUBLYLINKEDLIST_H_HEAP_H
 #include <vector>
+#include <cstdarg>
 
 enum HeapType {MaxHeap, MinHeap};
 
@@ -16,8 +17,22 @@ public:
     int capacity = 0;
     int size = 0;
 
-    explicit Heap()
+    explicit Heap ()
     {
+
+    }
+    explicit Heap(HeapType type, T items, ...)
+    {
+        va_list arguments;
+
+        // Init variable argument list.
+        va_start(arguments, items);
+        for (int i = 0; i < items; i++) {
+            this->insert(va_arg(arguments, T), type);
+        }
+        // Clean up argument list
+        va_end(arguments);
+
     }
 
     int parent(int i);
@@ -28,7 +43,6 @@ public:
     void insert(T data, HeapType type = MaxHeap);
     void print();
     void sort(HeapType type = MaxHeap);
-
 };
 
 #endif //DOUBLYLINKEDLIST_H_HEAP_H

@@ -3,10 +3,7 @@
 
 int main()
 {
-    Heap<int> h;
-    h.insert(1);
-    h.insert(2);
-    h.insert(3);
+    Heap<int> h(MaxHeap, 3, 1, 2, 3);
     std::cout << "MaxHeap : \n";
     h.print();
     Heap<int> h2;
