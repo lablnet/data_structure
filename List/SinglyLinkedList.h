@@ -33,7 +33,6 @@ class SinglyLinkedList {
          *
          * @param items list of item separated by commas to be inserted.
          * @since 1.0.0
-         * @todo
          */
         explicit SinglyLinkedList(T items, ...) {
             // Init values.

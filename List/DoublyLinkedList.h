@@ -33,7 +33,6 @@ class DoublyLinkedList {
          *
          * @param items list of item separated by commas to be inserted.
          * @since 1.0.0
-         * @todo
          */
         explicit DoublyLinkedList(T items, ...) {
             // Init values.
