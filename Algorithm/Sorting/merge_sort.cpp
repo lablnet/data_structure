@@ -4,6 +4,7 @@
 #include <iostream>
 #include <vector>
 
+// Divide and Conquer merge sort.
 template<typename T>
 std::vector<T> merge(std::vector<T> left, std::vector<T> right)
 {

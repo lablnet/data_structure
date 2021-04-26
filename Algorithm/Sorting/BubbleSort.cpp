@@ -4,6 +4,7 @@
 #include <iostream>
 #include <vector>
 
+// Compares adjacent element and swap if condition satisfied.
 template<typename T>
 std::vector<T> bubble_sort(std::vector<T> arr)
 {

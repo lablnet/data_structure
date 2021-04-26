@@ -4,6 +4,7 @@
 #include <iostream>
 #include <vector>
 
+// sub list (compare first elem with 2nd one)
 template<typename T>
 std::vector<T> insertion_sort(std::vector<T> arr)
 {
