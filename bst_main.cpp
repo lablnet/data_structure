@@ -10,6 +10,12 @@ int main(void)
     tree.insert(6);
     tree.insert(3);
     tree.insert(4);
+    tree.insert(10);
+    tree.insert(9);
+    tree.insert(8);
+
+    std::cout << "Minimum: " << tree.minimum() << std::endl;
+    std::cout << "Maximum: " << tree.maximum() << std::endl;
 
     tree.inorder();
     std::cout << std::endl;
