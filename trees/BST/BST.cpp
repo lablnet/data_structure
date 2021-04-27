@@ -42,23 +42,21 @@ void BST<T>::inorder(BstNode<T> *rootNode) {
 
 template<typename T>
 T BST<T>::search(T item) {
-    BstNode<T> * s = this->search(this->root, item);
-   if (s->data == item) {
+   BstNode<T> * s = this->search(this->root, item);
+   if (s != nullptr) {
        return s->data;
-   } else {
-       return 1;
    }
+   return T{};
 }
 
 template<typename T>
 BstNode<T> *BST<T>::search(BstNode<T> *rootNode, T item) {
+    if (rootNode == nullptr) return nullptr;
     if (item == rootNode->data) {
         return rootNode;
     } else if (item < rootNode->data) {
         return this->search(rootNode->left, item);
     } else if (item > rootNode->data) {
         return this->search(rootNode->right, item);
-    } else {
-        return nullptr;
     }
 }
