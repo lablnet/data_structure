@@ -10,17 +10,20 @@ void BST<T>::insert(T item) {
 template<typename T>
 BstNode<T> *BST<T>::insert(BstNode<T> *rootNode, T item) {
     if (!rootNode) {
-        this->root = new BstNode<T>();
-        this->root->data = item;
-        this->root->left = nullptr;
-        this->root->right = nullptr;
-        return this->root;
+        auto *temp = new BstNode<T>();
+        temp->data = item;
+        temp->left = nullptr;
+        temp->right = nullptr;
+        temp->parent = this->root;
+        this->root  = temp;
+        return temp;
     }
     if (item < rootNode->data) {
         rootNode->left = this->insert(rootNode->left, item);
     } else {
         rootNode->right = this->insert(rootNode->right, item);
     }
+
     this->root = rootNode;
     return rootNode;
 }

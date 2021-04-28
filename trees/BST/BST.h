@@ -9,7 +9,7 @@ template <typename T>
 class BstNode {
 public:
     T data;
-    BstNode<T> *left, *right = nullptr;
+    BstNode<T> *left, *right, *parent = nullptr;
 };
 
 template <typename T>
