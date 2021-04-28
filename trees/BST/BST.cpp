@@ -49,9 +49,7 @@ void BST<T>::inorder(BstNode<T> *rootNode) {
 template<typename T>
 T BST<T>::search(T item) {
    BstNode<T> * s = this->search(this->root, item);
-   if (s != nullptr) {
-       return s->data;
-   }
+   if (s != nullptr) return s->data;
    return T{};
 }
 
@@ -68,23 +66,31 @@ BstNode<T> *BST<T>::search(BstNode<T> *rootNode, T item) {
 }
 
 template<typename T>
-BstNode<T> *BST<T>::minimum() {
-    auto temp = this->root;
+BstNode<T> *BST<T>::minimum(BstNode<T> *rootNode) {
+    auto temp = rootNode;
     while (temp->left != nullptr) temp = temp->left;
     return temp;
 }
 
 template<typename T>
-BstNode<T> *BST<T>::maximum() {
-    auto temp = this->root;
+BstNode<T> *BST<T>::minimum() {
+    return this->minimum(this->root);
+}
+
+template<typename T>
+BstNode<T> *BST<T>::maximum(BstNode<T> *rootNode) {
+    auto temp = rootNode;
     while (temp->right != nullptr) temp = temp->right;
     return temp;
-
+}
+template<typename T>
+BstNode<T> *BST<T>::maximum() {
+    return this->maximum(this->root);
 }
 
 template<typename T>
 BstNode<T> *BST<T>::successor(BstNode<T> *rootNode) {
-    if (rootNode->right != nullptr) return minimum();
+    if (rootNode->right != nullptr) return minimum(rootNode->right);
     auto *temp = rootNode->parent;
     while (temp != nullptr && rootNode == temp->right) {
         rootNode = temp;
@@ -94,11 +100,31 @@ BstNode<T> *BST<T>::successor(BstNode<T> *rootNode) {
 }
 
 template<typename T>
-void BST<T>::delNode(T key) {
-
+T BST<T>::successor(T item) {
+    BstNode<T> *s = this->search(this->root, item);
+    if (s != nullptr) return this->successor(s)->data;
+    return T{};
 }
 
 template<typename T>
 BstNode<T> *BST<T>::predecessor(BstNode<T> *rootNode) {
-    return nullptr;
+    if (rootNode->left != nullptr) return maximum(rootNode->left);
+    auto *temp = rootNode->parent;
+    while (temp != nullptr && rootNode == temp->left) {
+        rootNode = temp;
+        temp = temp->parent;
+    }
+    return temp;
+}
+
+template<typename T>
+T BST<T>::predecessor(T item) {
+    BstNode<T> *s = this->search(this->root, item);
+    if (s != nullptr) return this->predecessor(s)->data;
+    return T{};
+}
+
+template<typename T>
+void BST<T>::delNode(T key) {
+
 }

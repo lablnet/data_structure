@@ -18,6 +18,8 @@ private:
     BstNode<T> *search(BstNode<T> *rootNode, T item);
     BstNode<T> *insert(BstNode<T> *rootNode, T item);
     void inorder(BstNode<T> *rootNode);
+    BstNode<T> *minimum(BstNode<T> *rootNode);
+    BstNode<T> *maximum(BstNode<T> *rootNode);
 
 public:
     BstNode<T> *root = nullptr;
@@ -28,8 +30,10 @@ public:
     BstNode<T> *minimum();
     BstNode<T> *maximum();
     BstNode<T> *successor(BstNode<T> *rootNode);
-    void delNode(T key);
     BstNode<T> *predecessor(BstNode<T> *rootNode);
+    T successor(T item);
+    T predecessor(T item);
+    void delNode(T key);
 
 };
 

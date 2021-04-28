@@ -16,7 +16,9 @@ int main(void)
     std::cout << "Minimum: " << tree.minimum()->data << std::endl; // 3
     std::cout << "Maximum: " << tree.maximum()->data << std::endl; // 10
     // Successor of 9 is 7
-    std::cout << "Successor of " << tree.root->right->left->data << " is " << tree.successor(tree.root->right->left)->data << std::endl;
+    std::cout << "Successor of " << 9 << " is " << tree.successor(9) << std::endl;
+    std::cout << "Predecessor of " << 9 << " is " << tree.predecessor(9) << std::endl;
+
     tree.inorder();
     // 3, 4, 5, 6, 7, 8, 9, 10
     std::cout << std::endl;
