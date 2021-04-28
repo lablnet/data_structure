@@ -26,7 +26,7 @@ You're welcome to contribute to this project.
 You should follow contribution guideline [Contribution guideline](https://github.com/lablnet/Data_Structure/blob/main/CONTRIBUTING.md)
 
 ## License  
-GPL-3  
+MIT 
   
 ## Support  
 If you like this project; Donate coffee?    
