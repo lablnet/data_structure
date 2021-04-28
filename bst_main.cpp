@@ -13,7 +13,6 @@ int main(void)
     tree.insert(9);
     tree.insert(8);
 
-    std::cout << "Test " << tree.root->right->left->parent->data << std::endl;
     std::cout << "Minimum: " << tree.minimum()->data << std::endl; // 3
     std::cout << "Maximum: " << tree.maximum()->data << std::endl; // 10
     // Successor of 9 is 7

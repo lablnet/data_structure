@@ -14,14 +14,19 @@ BstNode<T> *BST<T>::insert(BstNode<T> *rootNode, T item) {
         temp->data = item;
         temp->left = nullptr;
         temp->right = nullptr;
-        temp->parent = this->root;
+        temp->parent = nullptr;
         this->root  = temp;
         return temp;
     }
+    BstNode<T> *temp;
     if (item < rootNode->data) {
-        rootNode->left = this->insert(rootNode->left, item);
+        temp = this->insert(rootNode->left, item);
+        rootNode->left = temp;
+        temp->parent = rootNode;
     } else {
-        rootNode->right = this->insert(rootNode->right, item);
+        temp = this->insert(rootNode->right, item);
+        rootNode->right = temp;
+        temp->parent = rootNode;
     }
 
     this->root = rootNode;
