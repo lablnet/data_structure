@@ -45,7 +45,6 @@ public:
         }
         // Clean up argument list
         va_end(arguments);
-
     }
 
     /**

@@ -5,6 +5,8 @@
 #ifndef DOUBLYLINKEDLIST_H_BST_H
 #define DOUBLYLINKEDLIST_H_BST_H
 
+#include <cstdarg>
+
 template <typename T>
 class BstNode {
 public:
@@ -14,7 +16,7 @@ public:
 
 template <typename T>
 class BST {
-private:
+protected:
 
     /**
      * Insert an item into the BST.
@@ -112,6 +114,28 @@ private:
 
 public:
     BstNode<T> *root = nullptr;
+
+    BST (){}
+
+    /**
+     * Explicit constructor to insert items.
+     *
+     * @param items list of item separated by commas to be inserted.
+     *
+     * @since 1.0.0
+     */
+    explicit BST(T items, ...)
+    {
+        va_list arguments;
+
+        // Init variable argument list.
+        va_start(arguments, items);
+        for (int i = 0; i < items; i++) {
+            this->insert(va_arg(arguments, T));
+        }
+        // Clean up argument list
+        va_end(arguments);
+    }
 
     /**
      * Insert an item into the BST.
