@@ -19,7 +19,7 @@ int main(void)
     std::cout << "Successor of " << 9 << " is " << tree.successor(9) << std::endl;
     std::cout << "Predecessor of " << 9 << " is " << tree.predecessor(9) << std::endl;
 
-    tree.remove(9);
+    tree.remove(10);
     tree.inorder();
     // 3, 4, 5, 6, 7, 8, 9, 10
     std::cout << std::endl;

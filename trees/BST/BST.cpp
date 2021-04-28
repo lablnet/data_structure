@@ -8,6 +8,7 @@ template<typename T>
 void BST<T>::insert(T item) {
     this->root  = this->insert(this->root, item);
 }
+
 template<typename T>
 BstNode<T> *BST<T>::insert(BstNode<T> *rootNode, T item) {
     if (!rootNode) {
@@ -162,5 +163,5 @@ BstNode<T> *BST<T>::remove(BstNode<T> *rootNode, T item) {
 template <typename T>
 void BST<T>::remove(T item)
 {
-    this->remove(this->root, item);
+   this->remove(this->root, item);
 }
