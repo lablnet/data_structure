@@ -5,7 +5,7 @@
 #include "BST.h"
 template<typename T>
 void BST<T>::insert(T item) {
-    this->insert(this->root, item);
+    this->root  = this->insert(this->root, item);
 }
 template<typename T>
 BstNode<T> *BST<T>::insert(BstNode<T> *rootNode, T item) {
@@ -15,7 +15,6 @@ BstNode<T> *BST<T>::insert(BstNode<T> *rootNode, T item) {
         temp->left = nullptr;
         temp->right = nullptr;
         temp->parent = nullptr;
-        this->root  = temp;
         return temp;
     }
     BstNode<T> *temp;
