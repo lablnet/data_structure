@@ -3,6 +3,7 @@
 //
 #include <iostream>
 #include "BST.h"
+
 template<typename T>
 void BST<T>::insert(T item) {
     this->root  = this->insert(this->root, item);
@@ -122,6 +123,44 @@ T BST<T>::predecessor(T item) {
 }
 
 template<typename T>
-void BST<T>::delNode(T key) {
+void BST<T>::transplant(BstNode<T> *u, BstNode<T> *v) {
+    if (u->parent == nullptr)
+        this->root = v;
+    else if (u == v->parent->left) {
+        u->parent->left = v;
+    } else {
+        u->parent->right = v;
+    }
+    if (v != nullptr) {
+        v->parent = u->left;
+    }
+}
 
+template<typename T>
+BstNode<T> *BST<T>::remove(BstNode<T> *rootNode, T item) {
+    BstNode<T> *s = this->search(rootNode, item);
+    if (s == nullptr) return nullptr;
+    if (s->left == nullptr) {
+        transplant(s, s->right);
+    } else if (s->right == nullptr) {
+        transplant(s, s->left);
+    } else {
+        auto temp = this->minimum(s->right);
+        if (temp->parent != s) {
+            transplant(temp, temp->right);
+            temp->right = s->right;
+            s->right = temp;
+        }
+        transplant(s, temp);
+        temp->left = s->left;
+        temp->left->parent = s;
+    }
+
+    return rootNode;
+}
+
+template <typename T>
+void BST<T>::remove(T item)
+{
+    this->remove(this->root, item);
 }

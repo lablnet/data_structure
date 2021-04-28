@@ -89,6 +89,27 @@ private:
      */
     BstNode<T> *predecessor(BstNode<T> *rootNode);
 
+    /**
+     * Replaces one subtree as a child of its parent with another subtree.
+     *
+     * @param u parent tree.
+     * @param v child tree.
+     *
+     * @since 1.0.0
+     * @return void
+     */
+    void transplant(BstNode<T> *u, BstNode<T> *v);
+
+    /**
+     * Delete the node from BST by item.
+     *
+     * @param item item to delete node.
+     *
+     * @since 1.0.0
+     * @return void
+     */
+    BstNode<T> *remove(BstNode<T> * rootNode, T item);
+
 public:
     BstNode<T> *root = nullptr;
 
@@ -164,7 +185,7 @@ public:
      * @since 1.0.0
      * @return void
      */
-    void delNode(T item);
+    void remove(T item);
 
 };
 
