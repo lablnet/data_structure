@@ -92,3 +92,13 @@ BstNode<T> *BST<T>::successor(BstNode<T> *rootNode) {
     }
     return temp;
 }
+
+template<typename T>
+void BST<T>::delNode(T key) {
+
+}
+
+template<typename T>
+BstNode<T> *BST<T>::predecessor(BstNode<T> *rootNode) {
+    return nullptr;
+}

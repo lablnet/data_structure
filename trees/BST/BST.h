@@ -28,6 +28,8 @@ public:
     BstNode<T> *minimum();
     BstNode<T> *maximum();
     BstNode<T> *successor(BstNode<T> *rootNode);
+    void delNode(T key);
+    BstNode<T> *predecessor(BstNode<T> *rootNode);
 
 };
 
