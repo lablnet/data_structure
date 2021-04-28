@@ -12,9 +12,6 @@ BstNode<T> *BST<T>::insert(BstNode<T> *rootNode, T item) {
     if (!rootNode) {
         auto *temp = new BstNode<T>();
         temp->data = item;
-        temp->left = nullptr;
-        temp->right = nullptr;
-        temp->parent = nullptr;
         return temp;
     }
     BstNode<T> *temp;
