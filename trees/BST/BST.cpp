@@ -28,7 +28,6 @@ BstNode<T> *BST<T>::insert(BstNode<T> *rootNode, T item) {
         temp->parent = rootNode;
     }
 
-    this->root = rootNode;
     return rootNode;
 }
 
