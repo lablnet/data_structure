@@ -65,16 +65,27 @@ BstNode<T> *BST<T>::search(BstNode<T> *rootNode, T item) {
 }
 
 template<typename T>
-T BST<T>::minimum() {
+BstNode<T> *BST<T>::minimum() {
     auto temp = this->root;
     while (temp->left != nullptr) temp = temp->left;
-    return temp->data;
+    return temp;
 }
 
 template<typename T>
-T BST<T>::maximum() {
+BstNode<T> *BST<T>::maximum() {
     auto temp = this->root;
     while (temp->right != nullptr) temp = temp->right;
-    return temp->data;
+    return temp;
 
+}
+
+template<typename T>
+BstNode<T> *BST<T>::successor(BstNode<T> *rootNode) {
+    if (rootNode->right != nullptr) return minimum();
+    auto *temp = rootNode->parent;
+    while (temp != nullptr && rootNode == temp->right) {
+        rootNode = temp;
+        temp = temp->parent;
+    }
+    return temp;
 }

@@ -25,8 +25,9 @@ public:
     void insert(T item);
     void inorder();
     T search(T item);
-    T minimum();
-    T maximum();
+    BstNode<T> *minimum();
+    BstNode<T> *maximum();
+    BstNode<T> *successor(BstNode<T> *rootNode);
 
 };
 
