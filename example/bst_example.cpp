@@ -1,5 +1,5 @@
 #include <iostream>
-#include "trees/BST/BST.cpp"
+#include "../trees/BST/BST.cpp"
 
 int main(void)
 {

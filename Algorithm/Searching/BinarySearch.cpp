@@ -1,7 +1,6 @@
 //
 // Created by Umer on 4/25/2021.
 //
-#include <iostream>
 #include <vector>
 
 template<typename T>
@@ -41,19 +40,3 @@ int binary_search_r(std::vector<T> arr, T item, int left, int right)
     return -1;
 }
 
-int main()
-{
-    std::vector<int> arr;
-    arr.push_back(1);
-    arr.push_back(2);
-    arr.push_back(3);
-    arr.push_back(4);
-
-    // we considered our array are sorted.
-
-    std::cout << "search " << binary_search(arr, 3) << std::endl;
-    std::cout << "search not found " << binary_search(arr, 13) << std::endl;
-    std::cout << "R search " << binary_search_r(arr, 3, 0, arr.size() - 1) << std::endl;
-    std::cout << "R search " << binary_search_r(arr, 13, 0, arr.size() - 1) << std::endl;
-    return 0;
-}
