@@ -12,6 +12,7 @@ class BstNode {
 public:
     T data;
     BstNode<T> *left, *right, *parent = nullptr;
+    int height = 1; // for AVL tree.
 };
 
 template <typename T>
