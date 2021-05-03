@@ -12,6 +12,7 @@ class BstNode {
 public:
     T data;
     BstNode<T> *left, *right, *parent = nullptr;
+    int height = 1; // for AVL tree.
 };
 
 template <typename T>
@@ -90,17 +91,6 @@ protected:
      * @return BstNode<T>
      */
     BstNode<T> *predecessor(BstNode<T> *rootNode);
-
-    /**
-     * Replaces one subtree as a child of its parent with another subtree.
-     *
-     * @param u parent tree.
-     * @param v child tree.
-     *
-     * @since 1.0.0
-     * @return void
-     */
-    void transplant(BstNode<T> *u, BstNode<T> *v);
 
     /**
      * Delete the node from BST by item.

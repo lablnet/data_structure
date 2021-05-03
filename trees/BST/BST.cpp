@@ -8,6 +8,7 @@ template<typename T>
 void BST<T>::insert(T item) {
     this->root  = this->insert(this->root, item);
 }
+
 template<typename T>
 BstNode<T> *BST<T>::insert(BstNode<T> *rootNode, T item) {
     if (!rootNode) {
@@ -123,37 +124,24 @@ T BST<T>::predecessor(T item) {
 }
 
 template<typename T>
-void BST<T>::transplant(BstNode<T> *u, BstNode<T> *v) {
-    if (u->parent == nullptr)
-        this->root = v;
-    else if (u == v->parent->left) {
-        u->parent->left = v;
-    } else {
-        u->parent->right = v;
-    }
-    if (v != nullptr) {
-        v->parent = u->left;
-    }
-}
-
-template<typename T>
 BstNode<T> *BST<T>::remove(BstNode<T> *rootNode, T item) {
     BstNode<T> *s = this->search(rootNode, item);
     if (s == nullptr) return nullptr;
+
+    // if node with no or only one child
     if (s->left == nullptr) {
-        transplant(s, s->right);
+        auto *temp = rootNode->right;
+        delete [] rootNode;
+        return temp;
     } else if (s->right == nullptr) {
-        transplant(s, s->left);
+        auto *temp = rootNode->left;
+        delete [] rootNode;
+        return temp;
     } else {
-        auto temp = this->minimum(s->right);
-        if (temp->parent != s) {
-            transplant(temp, temp->right);
-            temp->right = s->right;
-            s->right = temp;
-        }
-        transplant(s, temp);
-        temp->left = s->left;
-        temp->left->parent = s;
+        // if node have two children.
+        auto *temp = this->minimum(rootNode->right);
+        rootNode->data = temp->data;
+        rootNode->right = this->remove(rootNode->right, temp->data);
     }
 
     return rootNode;
@@ -162,5 +150,5 @@ BstNode<T> *BST<T>::remove(BstNode<T> *rootNode, T item) {
 template <typename T>
 void BST<T>::remove(T item)
 {
-    this->remove(this->root, item);
+   this->root = this->remove(this->root, item);
 }
