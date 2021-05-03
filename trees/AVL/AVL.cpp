@@ -6,7 +6,7 @@
 template<typename T>
 int AVL<T>::height(BstNode<T> *node) {
     if (node != nullptr) return node->height;
-    else return -1;
+    else return 0;
 }
 
 template<typename T>
@@ -102,4 +102,6 @@ void AVL<T>::insert(T data) {
 
 template<typename T>
 void AVL<T>::remove(T data) {
+    auto *node = BST<T>::remove(this->root, data);
+    this->rebalance(node);
 }
