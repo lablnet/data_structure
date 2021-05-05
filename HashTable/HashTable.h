@@ -20,6 +20,7 @@ public:
     long long capacity = 1;
     long long size = 1;
     HashTable() {
+        this->capacity = 15;
         this->table = (TableItems<T>*)malloc(this->capacity * sizeof(TableItems<T>));
     }
     int hash(int key);
