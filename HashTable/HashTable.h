@@ -1,9 +1,15 @@
 //
-// Created by Hp on 5/5/2021.
+// Created by Umer on 5/5/2021.
 //
 
 #ifndef DOUBLYLINKEDLIST_H_HASHTABLE_H
 #define DOUBLYLINKEDLIST_H_HASHTABLE_H
+
+#include "HashFunctions.h"
+
+enum HashType {MOD, MUL};
+
+#define MIN_HASH_BUCKET 8
 
 template <typename T>
 class TableItems {
@@ -18,7 +24,7 @@ class HashTable {
 public:
     TableItems<T> *table;
     TableItems<T> *temp;
-    long long capacity = 1000;
+    long long capacity = MIN_HASH_BUCKET;
     long long size = 1;
     HashTable() {
         this->table = (TableItems<T>*)malloc(this->capacity * sizeof(TableItems<T>));

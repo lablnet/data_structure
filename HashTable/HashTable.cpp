@@ -1,5 +1,5 @@
 //
-// Created by Hp on 5/5/2021.
+// Created by Umer on 5/5/2021.
 //
 
 #include <iostream>
@@ -34,7 +34,7 @@ template<typename T>
 void HashTable<T>::insert(T key, T value)
 {
     if (this->size == this->capacity) {
-        this->capacity*= 2;
+        this->capacity = 2 * MIN_HASH_BUCKET;
         this->temp = (TableItems<T>*)realloc(this->table, this->capacity * sizeof(TableItems<T>));
         this->table = this->temp;
         int h = this->hash(key);
