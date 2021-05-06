@@ -36,6 +36,7 @@ public:
     void add(int h, K key, V value);
     void insert(K key, V value);
     void rehash();
+    V get(int key);
     V operator[] (int key);
     void erase(int key);
 };

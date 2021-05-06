@@ -46,13 +46,18 @@ void HashTable<K, V>::insert(K key, V value)
     this->add(h, key, value);
 }
 
-template <typename K, typename V>
-V HashTable<K, V>::operator[](int key)
-{
+template<typename K, typename V>
+V HashTable<K, V>::get(int key) {
     int h = this->hash(key);
     auto item = this->table[h];
     if (item.valid == true) return item.value;
     else throw std::invalid_argument("Key error");
+}
+
+template <typename K, typename V>
+V HashTable<K, V>::operator[](int key)
+{
+    return this->get(key);
 }
 
 template <typename K, typename V>
