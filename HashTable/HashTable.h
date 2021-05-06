@@ -18,7 +18,7 @@ class HashTable {
 public:
     TableItems<T> *table;
     TableItems<T> *temp;
-    long long capacity = 1;
+    long long capacity = 1000;
     long long size = 1;
     HashTable() {
         this->table = (TableItems<T>*)malloc(this->capacity * sizeof(TableItems<T>));
@@ -31,6 +31,7 @@ public:
     void insert(T key, T value);
     void rehash();
     T operator[] (int key);
+    void erase(int key);
 };
 
 #endif //DOUBLYLINKEDLIST_H_HASHTABLE_H

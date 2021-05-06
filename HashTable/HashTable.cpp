@@ -54,3 +54,13 @@ T HashTable<T>::operator[](int key)
     if (item.valid == true) return item.value;
     else throw std::invalid_argument("Key error");
 }
+
+template<typename T>
+void HashTable<T>::erase(int key)
+{
+    int h = this->hash(key);
+    auto item = this->table[h];
+    if (item.valid == true) {
+        this->table[h] = TableItems<T>();
+    }
+}
