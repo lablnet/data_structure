@@ -25,10 +25,7 @@ V Dict<K, V>::get(int key, V def) {
 
 template<typename K, typename V>
 V Dict<K, V>::pop(int key, V def) {
-    try {
-        V val = HashTable<K, V>::get(key);
-        this->erase(key);
-        return val;
-    } catch (std::invalid_argument e) {
-        return def;
-    }}
+    V val = this->get(key, def);
+    this->erase(key);
+    return val;
+}
