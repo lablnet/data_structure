@@ -4,7 +4,7 @@
 
 int main()
 {
-    HashTable<int> h;
+    HashTable<int, int> h;
     h.insert(1, 5);
     h.insert(3, 6);
     h.insert(5, 16);

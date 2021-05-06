@@ -11,32 +11,32 @@ enum HashType {MOD, MUL};
 
 #define MIN_HASH_BUCKET 8
 
-template <typename T>
+template <typename K, typename V>
 class TableItems {
 public:
-    T key;
-    T value;
+    K key;
+    V value;
     bool valid = false;
 };
 
-template <typename T>
+template <typename K, typename V>
 class HashTable {
 public:
-    TableItems<T> *table;
-    TableItems<T> *temp;
+    TableItems<K, V> *table;
+    TableItems<K, V> *temp;
     long long capacity = MIN_HASH_BUCKET;
     long long size = 1;
     HashTable() {
-        this->table = (TableItems<T>*)malloc(this->capacity * sizeof(TableItems<T>));
+        this->table = (TableItems<K, V>*)malloc(this->capacity * sizeof(TableItems<K, V>));
         for (int i = 0; i< this->capacity; i++) {
-            this->table[i] = TableItems<T>();
+            this->table[i] = TableItems<K, V>();
         }
     }
     int hash(int key);
-    void add(int h, T key, T value);
-    void insert(T key, T value);
+    void add(int h, K key, V value);
+    void insert(K key, V value);
     void rehash();
-    T operator[] (int key);
+    V operator[] (int key);
     void erase(int key);
 };
 
