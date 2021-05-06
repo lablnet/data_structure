@@ -10,6 +10,7 @@ class TableItems {
 public:
     T key;
     T value;
+    bool valid = false;
 };
 
 template <typename T>
@@ -17,11 +18,13 @@ class HashTable {
 public:
     TableItems<T> *table;
     TableItems<T> *temp;
-    long long capacity = 1;
+    long long capacity = 2;
     long long size = 1;
     HashTable() {
-        this->capacity = 15;
         this->table = (TableItems<T>*)malloc(this->capacity * sizeof(TableItems<T>));
+        for (int i = 0; i< this->capacity; i++) {
+            this->table[i] = TableItems<T>();
+        }
     }
     int hash(int key);
     void add(int h, T key, T value);

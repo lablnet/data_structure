@@ -6,10 +6,10 @@
 #include "HashTable.h"
 
 template<typename T>
-
 void HashTable<T>::add(int h, T key, T value) {
     this->table[h].key = key;
     this->table[h].value = value;
+    this->table[h].valid = true;
     this->size++;
 }
 
@@ -22,7 +22,9 @@ template<typename T>
 void HashTable<T>::insert(T key, T value)
 {
     if (this->size == this->capacity) {
-        this->capacity++;
+        this->capacity*= 2;
+        // need to rehash all the items.
+        // TODO
         this->temp = (TableItems<T>*)realloc(this->table, this->capacity * sizeof(TableItems<T>));
         this->table = this->temp;
         int h = this->hash(key);
@@ -37,7 +39,9 @@ template<typename T>
 T HashTable<T>::operator[](int key)
 {
     int h = this->hash(key);
-    T item = this->table[h].value;
-
-    return item;
+    auto item = this->table[h];
+    if (item.valid == true) return item.value;
+    else {
+        throw std::invalid_argument("Key error");
+    }
 }
