@@ -18,7 +18,7 @@ class HashTable {
 public:
     TableItems<T> *table;
     TableItems<T> *temp;
-    long long capacity = 2;
+    long long capacity = 1;
     long long size = 1;
     HashTable() {
         this->table = (TableItems<T>*)malloc(this->capacity * sizeof(TableItems<T>));
@@ -29,6 +29,7 @@ public:
     int hash(int key);
     void add(int h, T key, T value);
     void insert(T key, T value);
+    void rehash();
     T operator[] (int key);
 };
 
