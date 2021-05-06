@@ -41,7 +41,6 @@ T HashTable<T>::operator[](int key)
     int h = this->hash(key);
     auto item = this->table[h];
     if (item.valid == true) return item.value;
-    else {
-        throw std::invalid_argument("Key error");
-    }
+    else throw std::invalid_argument("Key error");
+
 }
