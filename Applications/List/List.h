@@ -49,7 +49,12 @@ public:
      *
      * @since 1.0.0
     */
-    List() {
+//    List() {
+//        this->items = (T*)malloc(this->memory * sizeof(T));
+//    }
+
+    explicit List(int size = LIST_MIN_SIZE) {
+        this->memory = size;
         this->items = (T*)malloc(this->memory * sizeof(T));
     }
 
