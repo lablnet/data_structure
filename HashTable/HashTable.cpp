@@ -34,7 +34,7 @@ template <typename K, typename V>
 void HashTable<K, V>::insert(K key, V value)
 {
     if (this->size == this->capacity) {
-        this->capacity = 2 * MIN_HASH_BUCKET;
+        this->capacity = 2 * MIN_HASH_BUCKET; // Table doubling.
         this->temp = (TableItems<K, V>*)realloc(this->table, this->capacity * sizeof(TableItems<K, V>));
         this->table = this->temp;
         int h = this->hash(key);
