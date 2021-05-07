@@ -184,6 +184,18 @@ public:
      * @return void
     */
     void extend(T *list, int size);
+
+    /**
+     *  Clear the list.
+     *
+     * @since 1.0.0
+     * @return void
+    */
+    void clear()
+    {
+        free(this->items);
+        free(this->temp);
+    }
 };
 
 #endif //DOUBLYLINKEDLIST_H_LIST_H
