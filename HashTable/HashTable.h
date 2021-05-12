@@ -6,17 +6,18 @@
 #define DOUBLYLINKEDLIST_H_HASHTABLE_H
 
 #include "HashFunctions.h"
+#include "../vendor/VariadicTable.h"
 
 enum HashType {MOD, MUL};
 
-#define MIN_HASH_BUCKET 8
+#define MIN_HASH_BUCKET 4
 
 template <typename K, typename V>
 class TableItems {
 public:
     K key;
     V value;
-    bool valid = false;
+    int hash = -1;
 };
 
 template <typename K, typename V>
@@ -33,12 +34,14 @@ public:
         }
     }
     int hash(int key);
-    void add(int h, K key, V value);
+    int rehash(int oldHash);
+    void add(K key, V value);
     void insert(K key, V value);
-    void rehash();
+    void rebuild();
     V get(int key);
     V operator[] (int key);
     void erase(int key);
+    void debug();
 };
 
 #endif //DOUBLYLINKEDLIST_H_HASHTABLE_H
