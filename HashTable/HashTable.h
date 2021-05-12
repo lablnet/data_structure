@@ -37,7 +37,6 @@ public:
     int rehash(int oldHash);
     void add(K key, V value);
     void insert(K key, V value);
-    void rebuild();
     V get(int key);
     V operator[] (int key);
     void erase(int key);
