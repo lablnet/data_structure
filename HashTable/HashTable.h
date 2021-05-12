@@ -10,7 +10,7 @@
 
 enum HashType {MOD, MUL};
 
-#define MIN_HASH_BUCKET 4
+#define MIN_HASH_BUCKET 8
 
 template <typename K, typename V>
 class TableItems {
@@ -22,11 +22,13 @@ public:
 
 template <typename K, typename V>
 class HashTable {
+private:
+    void rebuild(long long old_capacity, long long new_capacity);
 public:
     TableItems<K, V> *table;
     TableItems<K, V> *temp;
     long long capacity = MIN_HASH_BUCKET;
-    long long size = 1;
+    long long size = 0;
     HashTable() {
         this->table = (TableItems<K, V>*)malloc(this->capacity * sizeof(TableItems<K, V>));
         for (int i = 0; i< this->capacity; i++) {
@@ -37,6 +39,7 @@ public:
     int rehash(int oldHash);
     void add(K key, V value);
     void insert(K key, V value);
+    int getHash(int key);
     V get(int key);
     V operator[] (int key);
     void erase(int key);

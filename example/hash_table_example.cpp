@@ -12,8 +12,12 @@ int main()
     h.insert(33, 61);
     h.insert(54, 161);
 
-    //h.debug();
-    //h.erase(5);
+//    h.insert(1, 231);
+//    h.erase(54);
+//    h.erase(33);
+//    h.erase(12);
+//    h.erase(5);
+//    h.debug();
 
     std::cout << "1 = 5: " << h[1] << std::endl;
     std::cout << "3 = 6: " << h[3] << std::endl;
