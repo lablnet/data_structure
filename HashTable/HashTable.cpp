@@ -10,6 +10,10 @@ void HashTable<K, V>::rebuild(long long old_capacity, long long new_capacity) {
     // reset the size because we're rehashing/rebuilding table.
     this->size = 0;
     this->capacity = new_capacity;
+
+    // get the least prime
+    this->PRIME = lablnet::findLeastPrime(this->capacity);
+
     // init the temp node/array for storing previously stored item.
     auto *temp_table = (TableItems<K, V>*)malloc(old_capacity * sizeof(TableItems<K, V>));
 
@@ -34,28 +38,31 @@ void HashTable<K, V>::rebuild(long long old_capacity, long long new_capacity) {
 
 template <typename K, typename V>
 void HashTable<K, V>::add(K key, V value) {
-    int h = this->hash(key);
-    if (this->table[h].hash == -1) {
-        this->table[h].key = key;
-        this->table[h].value = value;
-        this->table[h].hash = h;
+    int hash1 = this->hash(key);
+    if (this->table[hash1].hash == -1) {
+        this->table[hash1].key = key;
+        this->table[hash1].value = value;
+        this->table[hash1].hash = hash1;
         this->size++;
     } else {
-        if (this->table[h].key == key) {
-            this->table[h].value = value;
+        // If the slot is occupied.
+        if (this->table[hash1].key == key) {
+            this->table[hash1].value = value;
         } else {
-            // linear probing...
-            int new_hash = this->rehash(h);
-            while (this->table[new_hash].hash != -1 && this->table[new_hash].key != key) {
-                new_hash = this->rehash(new_hash);
+            int hash2 = this->hash2(key);
+            int i = 0;
+            int hash3 = hash2;
+            while (this->table[hash3].hash != -1 && this->table[hash3].key != key) {
+                hash3 = (hash1 + i * hash2) % this->capacity;
+                i++;
             }
-            if (this->table[new_hash].hash == -1) {
-                this->table[new_hash].key = key;
-                this->table[new_hash].value = value;
-                this->table[new_hash].hash = new_hash;
+            if (this->table[hash3].hash == -1) {
+                this->table[hash3].key = key;
+                this->table[hash3].value = value;
+                this->table[hash3].hash = hash3;
                 this->size++;
             } else {
-                this->table[new_hash].value = value;
+                this->table[hash3].value = value;
             }
         }
     }
@@ -67,8 +74,8 @@ int HashTable<K, V>::hash(int key) {
 }
 
 template <typename K, typename V>
-int HashTable<K, V>::rehash(int oldHash) {
-    return this->hash(oldHash + 1);
+int HashTable<K, V>::hash2(int key) {
+    return this->PRIME - (key % this->PRIME);
 }
 
 template <typename K, typename V>
@@ -83,21 +90,23 @@ void HashTable<K, V>::insert(K key, V value)
     this->add(key, value);
 }
 
-
 template<typename K, typename V>
 int HashTable<K, V>::getHash(int key) {
     int hash = -1;
-    int start_hash = this->hash(key);
-    auto item = this->table[start_hash];
-    if (item.hash == start_hash && item.key == key) return item.hash;
+    int hash1 = this->hash(key);
+    auto item = this->table[hash1];
+    if (item.hash == hash1 && item.key == key) return item.hash;
     else {
-        int new_hash = start_hash;
-        while (this->table[new_hash].hash != -1) {
-            if (this->table[new_hash].key == key) return this->table[new_hash].hash;
+        int hash2 = this->hash2(key);
+        int hash3 = hash2;
+        int i = 0;
+        while (this->table[hash3].hash != -1) {
+            if (this->table[hash3].key == key) return this->table[hash3].hash;
             else {
-                new_hash = this->rehash(new_hash);
-                if (new_hash == start_hash) break;
+                hash3 = (hash1 + i * hash2) % this->capacity;
+                if (hash3 == hash1) break;
             }
+            i++;
         }
         return -1;
     }

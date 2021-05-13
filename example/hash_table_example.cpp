@@ -1,9 +1,9 @@
 #include <iostream>
 #include "../HashTable/HashTable.cpp"
 
-
 int main()
 {
+
     HashTable<int, int> h;
     h.insert(1, 5);
     h.insert(3, 6);

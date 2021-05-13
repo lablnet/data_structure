@@ -5,10 +5,8 @@
 #ifndef DOUBLYLINKEDLIST_H_HASHTABLE_H
 #define DOUBLYLINKEDLIST_H_HASHTABLE_H
 
-#include "HashFunctions.h"
+#include "HashUtility.h"
 #include "../vendor/VariadicTable.h"
-
-enum HashType {MOD, MUL};
 
 #define MIN_HASH_BUCKET 8
 
@@ -29,14 +27,16 @@ public:
     TableItems<K, V> *temp;
     long long capacity = MIN_HASH_BUCKET;
     long long size = 0;
+    int PRIME = 7;
     HashTable() {
         this->table = (TableItems<K, V>*)malloc(this->capacity * sizeof(TableItems<K, V>));
+        this->PRIME = lablnet::findLeastPrime(this->capacity);
         for (int i = 0; i< this->capacity; i++) {
             this->table[i] = TableItems<K, V>();
         }
     }
     int hash(int key);
-    int rehash(int oldHash);
+    int hash2(int key);
     void add(K key, V value);
     void insert(K key, V value);
     int getHash(int key);
