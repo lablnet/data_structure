@@ -1,5 +1,5 @@
 //
-// Created by Hp on 5/13/2021.
+// Created by Umer on 5/13/2021.
 //
 
 #ifndef DOUBLYLINKEDLIST_H_HASHUTILITY_H
@@ -8,6 +8,15 @@
 #include <typeinfo>
 
 namespace lablnet {
+
+    /**
+     * Determine whether the given number is prime?.
+     *
+     * @param num given number
+     *
+     * @since 1.0.0
+     * @return bool
+     */
     inline bool isPrime(int num) {
         if (num <= 1) return false;
         for (int i = 2; i < num; i++) {
@@ -16,6 +25,14 @@ namespace lablnet {
         return true;
     }
 
+    /**
+     * Find the last small prime of given number.
+     *
+     * @param num given number
+     *
+     * @since 1.0.0
+     * @return int
+     */
     inline int findLeastPrime(int num) {
         for (int i = num; i >= 2; i--) {
             if (isPrime(i)) return i;
@@ -23,6 +40,16 @@ namespace lablnet {
         return -1;
     }
 
+    /**
+     * Convert given string into hash.
+     *
+     * @param key      given string
+     * @param capacity Hash table capacity
+     *
+     * @bug Known issue
+     * @since 1.0.0
+     * @return int
+     */
     template <typename T>
     inline int hash_string(T key, long capacity) {
         int hash = 0;
@@ -34,6 +61,14 @@ namespace lablnet {
         return hash;
     }
 
+    /**
+     * Determine the type of template parameter.
+     *
+     * @param param given parameter
+     *
+     * @since 1.0.0
+     * @return <char *>
+     */
     template <typename T>
     inline std::string get_type(T param)
     {

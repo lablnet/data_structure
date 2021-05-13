@@ -22,7 +22,6 @@ class DoublyLinkedList {
          *
          * @since 1.0.0
          */
-
         explicit DoublyLinkedList() {
             this->head = nullptr;
             this->tail = nullptr;
