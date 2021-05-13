@@ -8,7 +8,7 @@ Several data structures and Algorithms implementations in C++
      - [x]  Doubly Linked List
 2. - [x] Binary Search Tree
 3. - [x] AVL Balance Tree
-4. - [ ] Hash Tables
+4. - [x] Hash Tables
 5. - [ ] Red Black Trees
 
 ### Algorithms
