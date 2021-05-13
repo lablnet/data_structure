@@ -6,7 +6,6 @@
 #define DOUBLYLINKEDLIST_H_HASHUTILITY_H
 
 #include <typeinfo>
-#include <sstream>
 
 namespace lablnet {
     inline bool isPrime(int num) {

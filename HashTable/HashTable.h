@@ -5,6 +5,7 @@
 #ifndef DOUBLYLINKEDLIST_H_HASHTABLE_H
 #define DOUBLYLINKEDLIST_H_HASHTABLE_H
 
+#include <iostream>
 #include "HashUtility.h"
 #include "../vendor/VariadicTable.h"
 

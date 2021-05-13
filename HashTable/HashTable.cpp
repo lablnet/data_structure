@@ -2,7 +2,6 @@
 // Created by Umer on 5/5/2021.
 //
 
-#include <iostream>
 #include "HashTable.h"
 
 template<typename K, typename V>
