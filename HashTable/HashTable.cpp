@@ -36,9 +36,20 @@ void HashTable<K, V>::rebuild(long long old_capacity, long long new_capacity) {
     }
 }
 
+template<typename K, typename V>
+int HashTable<K, V>::get_key(K key) {
+    if (lablnet::get_type(key) == "string") {
+        return lablnet::hash_string(key, this->capacity);
+    }
+
+    return static_cast<int>(key);
+}
+
 template <typename K, typename V>
 void HashTable<K, V>::add(K key, V value) {
-    int hash1 = this->hash(key);
+    int k = this->get_key(key);
+
+    int hash1 = this->hash(k);
     if (this->table[hash1].hash == -1) {
         this->table[hash1].key = key;
         this->table[hash1].value = value;
@@ -49,7 +60,7 @@ void HashTable<K, V>::add(K key, V value) {
         if (this->table[hash1].key == key) {
             this->table[hash1].value = value;
         } else {
-            int hash2 = this->hash2(key);
+            int hash2 = this->hash2(k);
             int i = 0;
             int hash3 = hash2;
             while (this->table[hash3].hash != -1 && this->table[hash3].key != key) {
@@ -91,13 +102,13 @@ void HashTable<K, V>::insert(K key, V value)
 }
 
 template<typename K, typename V>
-int HashTable<K, V>::getHash(int key) {
-    int hash = -1;
-    int hash1 = this->hash(key);
+int HashTable<K, V>::getHash(K key) {
+    int k = this->get_key(key);
+    int hash1 = this->hash(k);
     auto item = this->table[hash1];
     if (item.hash == hash1 && item.key == key) return item.hash;
     else {
-        int hash2 = this->hash2(key);
+        int hash2 = this->hash2(k);
         int hash3 = hash2;
         int i = 0;
         while (this->table[hash3].hash != -1) {
@@ -113,7 +124,7 @@ int HashTable<K, V>::getHash(int key) {
 }
 
 template<typename K, typename V>
-V HashTable<K, V>::get(int key) {
+V HashTable<K, V>::get(K key) {
     int hash = this->getHash(key);
     if (hash != -1){
         return this->table[hash].value;
@@ -122,13 +133,13 @@ V HashTable<K, V>::get(int key) {
 }
 
 template <typename K, typename V>
-V HashTable<K, V>::operator[](int key)
+V HashTable<K, V>::operator[](K key)
 {
     return this->get(key);
 }
 
 template <typename K, typename V>
-void HashTable<K, V>::erase(int key)
+void HashTable<K, V>::erase(K key)
 {
     int hash = this->getHash(key);
     if (hash != -1) {

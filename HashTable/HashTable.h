@@ -22,6 +22,8 @@ template <typename K, typename V>
 class HashTable {
 private:
     void rebuild(long long old_capacity, long long new_capacity);
+    int get_key(K key);
+    void add(K key, V value);
 public:
     TableItems<K, V> *table;
     TableItems<K, V> *temp;
@@ -37,12 +39,11 @@ public:
     }
     int hash(int key);
     int hash2(int key);
-    void add(K key, V value);
     void insert(K key, V value);
-    int getHash(int key);
-    V get(int key);
-    V operator[] (int key);
-    void erase(int key);
+    int getHash(K key);
+    V get(K key);
+    V operator[] (K key);
+    void erase(K key);
     void debug();
 };
 

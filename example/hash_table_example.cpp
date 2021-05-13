@@ -3,7 +3,9 @@
 
 int main()
 {
-
+    /*
+     * Known bug: not working with strings and maybe other types too, will fix later.
+     * */
     HashTable<int, int> h;
     h.insert(1, 5);
     h.insert(3, 6);

@@ -4,6 +4,10 @@
 
 #ifndef DOUBLYLINKEDLIST_H_HASHUTILITY_H
 #define DOUBLYLINKEDLIST_H_HASHUTILITY_H
+
+#include <typeinfo>
+#include <sstream>
+
 namespace lablnet {
     inline bool isPrime(int num) {
         if (num <= 1) return false;
@@ -20,13 +24,35 @@ namespace lablnet {
         return -1;
     }
 
-    inline int hash_string(std::string key, long capacity) {
+    template <typename T>
+    inline int hash_string(T key, long capacity) {
         int hash = 0;
+        std::string sKey = std::to_string(key);
+
         for (int i = 0; i < 5; i++) {
-            hash = (256 * hash + key[i]) % capacity;
+            hash = (256 * hash + sKey[i]) % capacity;
         }
         return hash;
     }
+
+    template <typename T>
+    inline std::string get_type(T param)
+    {
+        if (typeid(param).name() == typeid(int).name()) {
+            return "int";
+        } else if (typeid(param).name() == typeid(float).name()) {
+            return "float";
+        } else if (typeid(param).name() == typeid(double).name()) {
+            return "double";
+        } else if (typeid(param).name() == typeid(long).name()) {
+            return "long";
+        } else if (typeid(param).name() == typeid(long long).name()) {
+            return "long long";
+        }
+
+        return "string";
+    }
+
 }
 
 
