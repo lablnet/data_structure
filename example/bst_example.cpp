@@ -20,11 +20,17 @@ int main(void)
     std::cout << "Predecessor of " << 9 << " is " << tree.predecessor(9) << std::endl;
 
     tree.remove(10);
-    tree.inorder();
-    // 3, 4, 5, 6, 7, 8, 9, 10
     std::cout << std::endl;
     std::cout << "found " << tree.search(4) << std::endl; // Found 10
     std::cout << "not found: " << tree.search(121); // not found 0
+
+
+    std::cout << "\nPreOrder: \n";
+    tree.preorder();
+    std::cout << "\nInorder: \n";
+    tree.inorder();
+    std::cout << "\nPostorder: \n";
+    tree.postorder();
 
     return 0;
 }

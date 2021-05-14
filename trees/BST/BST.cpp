@@ -46,6 +46,37 @@ void BST<T>::inorder(BstNode<T> *rootNode) {
 }
 
 template<typename T>
+void BST<T>::preorder() {
+    this->preorder(this->root);
+}
+
+template<typename T>
+void BST<T>::preorder(BstNode<T> *rootNode) {
+    if (rootNode == nullptr) {
+        return;
+    }
+    std::cout << rootNode->data << std::endl;
+    this->preorder(rootNode->left);
+    this->preorder(rootNode->right);
+}
+
+template<typename T>
+void BST<T>::postorder() {
+    this->postorder(this->root);
+}
+
+template<typename T>
+void BST<T>::postorder(BstNode<T> *rootNode) {
+    if (rootNode == nullptr) {
+        return;
+    }
+    this->postorder(rootNode->left);
+    this->postorder(rootNode->right);
+    std::cout << rootNode->data << std::endl;
+}
+
+
+template<typename T>
 T BST<T>::search(T item) {
    BstNode<T> * s = this->search(this->root, item);
    if (s != nullptr) return s->data;

@@ -42,7 +42,9 @@ protected:
     BstNode<T> *search(BstNode<T> *rootNode, T item);
 
     /**
-     * Transverse the tree to print element in sorted order.
+     * Transverse the tree to print element in sorted/inorder order.
+     * NOTE:The binary-search-tree property allows us to print out all the keys in a binary
+search tree in sorted order by a simple recursive algorithm, called an inorder tree walk.
      *
      * @param rootNode the given node.
      *
@@ -50,6 +52,26 @@ protected:
      * @return void
      */
     void inorder(BstNode<T> *rootNode);
+
+    /**
+     * Transverse the tree to print element in preorder.
+     *
+     * @param rootNode the given node.
+     *
+     * @since 1.0.0
+     * @return void
+     */
+    void preorder(BstNode<T> *rootNode);
+
+    /**
+     * Transverse the tree to print element in postorder.
+     *
+     * @param rootNode the given node.
+     *
+     * @since 1.0.0
+     * @return void
+     */
+    void postorder(BstNode<T> *rootNode);
 
     /**
      * Get the minimum element node from BST.
@@ -139,11 +161,29 @@ public:
 
     /**
      * Transverse the tree to print element in sorted order.
+     * NOTE:The binary-search-tree property allows us to print out all the keys in a binary
+search tree in sorted order by a simple recursive algorithm, called an inorder tree walk.
      *
      * @since 1.0.0
      * @return void
      */
     void inorder();
+
+    /**
+     * Transverse the tree to print element in preorder.
+     *
+     * @since 1.0.0
+     * @return void
+     */
+    void preorder();
+
+    /**
+     * Transverse the tree to print element in postorder.
+     *
+     * @since 1.0.0
+     * @return void
+     */
+    void postorder();
 
     /**
      * Search an item in BST.
