@@ -14,7 +14,6 @@ BstNode<T> *BST<T>::insert(BstNode<T> *rootNode, T item) {
     if (!rootNode) {
         auto *temp = new BstNode<T>();
         temp->data = item;
-        this->n++;
         return temp;
     }
     BstNode<T> *temp;
@@ -187,27 +186,28 @@ T BST<T>::predecessor(T item) {
 
 template<typename T>
 BstNode<T> *BST<T>::remove(BstNode<T> *rootNode, T item) {
-    BstNode<T> *s = this->search(rootNode, item);
-    if (s == nullptr) return nullptr;
-
-    // if node with no or only one child
-    if (s->left == nullptr) {
-        auto *temp = rootNode->right;
-        delete [] rootNode;
-        this->n--;
-        return temp;
-    } else if (s->right == nullptr) {
-        auto *temp = rootNode->left;
-        delete [] rootNode;
-        this->n--;
-        return temp;
+    if (rootNode == nullptr) return nullptr;
+    if (item < rootNode->data) {
+        rootNode->left =  this->remove(rootNode->left, item);
+    } else if (item > rootNode->data) {
+        rootNode->right = this->remove(rootNode->right, item);
     } else {
-        // if node have two children.
-        auto *temp = this->minimum(rootNode->right);
-        rootNode->data = temp->data;
-        rootNode->right = this->remove(rootNode->right, temp->data);
+        // if node with no or only one child
+        if (rootNode->left == nullptr) {
+            auto *temp = rootNode->right;
+            delete[] rootNode;
+            return temp;
+        } else if (rootNode->right == nullptr) {
+            auto *temp = rootNode->left;
+            delete[] rootNode;
+            return temp;
+        } else {
+            // if node have two children.
+            auto *temp = this->minimum(rootNode->right);
+            rootNode->data = temp->data;
+            rootNode->right = this->remove(rootNode->right, temp->data);
+        }
     }
-
     return rootNode;
 }
 

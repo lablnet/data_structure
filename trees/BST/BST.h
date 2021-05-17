@@ -20,8 +20,6 @@ template <typename T>
 class BST {
 protected:
 
-    int n = 0;
-
     /**
      * Insert an item into the BST.
      *
