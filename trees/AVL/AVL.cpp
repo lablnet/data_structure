@@ -10,13 +10,8 @@ int AVL<T>::height(BstNode<T> *node) {
 }
 
 template<typename T>
-int AVL<T>::max(int a, int b) {
-    return (a > b) ? a : b;
-}
-
-template<typename T>
 void AVL<T>::update_height(BstNode<T> *node) {
-    node->height = this->max(this->height(node->left), this->height(node->right)) + 1;
+    node->height = max(this->height(node->left), this->height(node->right)) + 1;
 }
 
 template<typename T>

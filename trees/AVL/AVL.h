@@ -11,17 +11,6 @@ template <typename T>
 class AVL : public BST<T> {
 
     /**
-     * Get the max value.
-     *
-     * @param a first number.
-     * @param b second number.
-     *
-     * @since 1.0.0
-     * @return int
-     */
-    int max(int a, int b);
-
-    /**
      * Get the height of node.
      *
      * @param node the given node.

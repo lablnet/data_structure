@@ -19,18 +19,23 @@ int main(void)
     std::cout << "Successor of " << 9 << " is " << tree.successor(9) << std::endl;
     std::cout << "Predecessor of " << 9 << " is " << tree.predecessor(9) << std::endl;
 
-    tree.remove(10);
+    //tree.remove(10);
     std::cout << std::endl;
     std::cout << "found " << tree.search(4) << std::endl; // Found 10
     std::cout << "not found: " << tree.search(121); // not found 0
 
 
+    std::cout << "\nLevelOrder: \n";
+    tree.levelOrder();
     std::cout << "\nPreOrder: \n";
     tree.preorder();
     std::cout << "\nInorder: \n";
     tree.inorder();
     std::cout << "\nPostorder: \n";
     tree.postorder();
+
+    std::cout << "\n";
+    std::cout << tree.root->left->data;
 
     return 0;
 }

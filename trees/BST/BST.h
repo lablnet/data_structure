@@ -6,6 +6,7 @@
 #define DOUBLYLINKEDLIST_H_BST_H
 
 #include <cstdarg>
+#include "BstUtility.h"
 
 template <typename T>
 class BstNode {
@@ -18,6 +19,8 @@ public:
 template <typename T>
 class BST {
 protected:
+
+    int n = 0;
 
     /**
      * Insert an item into the BST.
@@ -40,6 +43,40 @@ protected:
      * @return BstNode<T>
      */
     BstNode<T> *search(BstNode<T> *rootNode, T item);
+
+    /**
+     * Find the height BST.
+     * The height of tree is
+     *      H = 1 + floor(log2(N))
+     * http://www.cs.gettysburg.edu/~ilinkin/courses/Fall-2020/cs216/notes/bintree.pdf
+     *
+     * @param rootNode the given node.
+     *
+     * @since 1.0.0
+     * @return int
+     */
+    int find_height_of_tree(BstNode<T> *rootNode);
+
+    /**
+     * Utility function for levelOrder transverse.
+     *
+     * @since 1.0.0
+     * @return void
+     */
+    void transverse_tree_level_order();
+
+    /**
+     * Transverse the tree to print element in level wise/order.
+     * It start's printing with level 0, 1 and so on.
+     * The height of BST is the number of nodes in the longest path from root to leaf.
+     *
+     * @param rootNode the given node.
+     * @param i        index.
+     *
+     * @since 1.0.0
+     * @return void
+     */
+    void levelOrder(BstNode<T> *rootNode, int i);
 
     /**
      * Transverse the tree to print element in sorted/inorder order.
@@ -92,7 +129,6 @@ search tree in sorted order by a simple recursive algorithm, called an inorder t
      * @return BstNode<T>
      */
     BstNode<T> *maximum(BstNode<T> *rootNode);
-
 
     /**
      * Get the next larger element / successor node.
@@ -158,6 +194,16 @@ public:
      * @return void
      */
     void insert(T item);
+
+    /**
+     * Transverse the tree to print element in level wise/order.
+     * It start's printing with level 0, 1 and so on.
+     * The height of BST is the number of nodes in the longest path from root to leaf.
+     *
+     * @since 1.0.0
+     * @return void
+     */
+    void levelOrder();
 
     /**
      * Transverse the tree to print element in sorted order.

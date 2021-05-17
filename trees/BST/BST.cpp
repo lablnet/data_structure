@@ -14,6 +14,7 @@ BstNode<T> *BST<T>::insert(BstNode<T> *rootNode, T item) {
     if (!rootNode) {
         auto *temp = new BstNode<T>();
         temp->data = item;
+        this->n++;
         return temp;
     }
     BstNode<T> *temp;
@@ -28,6 +29,36 @@ BstNode<T> *BST<T>::insert(BstNode<T> *rootNode, T item) {
     }
 
     return rootNode;
+}
+
+template<typename T>
+int BST<T>::find_height_of_tree(BstNode<T> *rootNode) {
+    if (rootNode == nullptr) return 0;
+    int left = this->find_height_of_tree(rootNode->left);
+    int right = this->find_height_of_tree(rootNode->right);
+    return 1 + max(left, right);
+}
+
+template <typename T>
+void BST<T>::transverse_tree_level_order()
+{
+    int height = this->find_height_of_tree(this->root);
+    for (int i = 0; i < height; i++) this->levelOrder(this->root, i);
+}
+
+template<typename T>
+void BST<T>::levelOrder(BstNode<T> *rootNode, int i) {
+    if (rootNode == nullptr) return;
+    if (i == 0) std::cout << rootNode->data << "\n";
+    else {
+        levelOrder(rootNode->left, i - 1);
+        levelOrder(rootNode->right, i - 1);
+    }
+}
+
+template<typename T>
+void BST<T>::levelOrder() {
+    this->transverse_tree_level_order();
 }
 
 template<typename T>
@@ -78,9 +109,9 @@ void BST<T>::postorder(BstNode<T> *rootNode) {
 
 template<typename T>
 T BST<T>::search(T item) {
-   BstNode<T> * s = this->search(this->root, item);
-   if (s != nullptr) return s->data;
-   return T{};
+    BstNode<T> * s = this->search(this->root, item);
+    if (s != nullptr) return s->data;
+    return T{};
 }
 
 template<typename T>
@@ -163,10 +194,12 @@ BstNode<T> *BST<T>::remove(BstNode<T> *rootNode, T item) {
     if (s->left == nullptr) {
         auto *temp = rootNode->right;
         delete [] rootNode;
+        this->n--;
         return temp;
     } else if (s->right == nullptr) {
         auto *temp = rootNode->left;
         delete [] rootNode;
+        this->n--;
         return temp;
     } else {
         // if node have two children.
@@ -181,5 +214,5 @@ BstNode<T> *BST<T>::remove(BstNode<T> *rootNode, T item) {
 template <typename T>
 void BST<T>::remove(T item)
 {
-   this->root = this->remove(this->root, item);
+    this->root = this->remove(this->root, item);
 }
