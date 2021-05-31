@@ -149,14 +149,15 @@ search tree in sorted order by a simple recursive algorithm, called an inorder t
     BstNode<T> *predecessor(BstNode<T> *rootNode);
 
     /**
-     * Delete the node from BST by item.
+     * Replaces one subtree as a child of its parent with another subtree.
      *
-     * @param item item to delete node.
+     * @param u The given node.
+     * @param v The other node.
      *
      * @since 1.0.0
      * @return void
      */
-    BstNode<T> *remove(BstNode<T> * rootNode, T item);
+    void transplant(BstNode<T> *u, BstNode<T> *v);
 
 public:
     BstNode<T> *root = nullptr;
@@ -284,7 +285,6 @@ search tree in sorted order by a simple recursive algorithm, called an inorder t
      * @return void
      */
     void remove(T item);
-
 };
 
 #endif //DOUBLYLINKEDLIST_H_BST_H

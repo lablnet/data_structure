@@ -7,7 +7,7 @@ int main ()
     a.insert(20);
     a.insert(11);
     a.insert(15);
-    a.insert(12);
+    a.insert(25);
 
     // remove 12 from the tree.
     a.remove(15);

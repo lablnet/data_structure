@@ -185,34 +185,44 @@ T BST<T>::predecessor(T item) {
 }
 
 template<typename T>
-BstNode<T> *BST<T>::remove(BstNode<T> *rootNode, T item) {
-    if (rootNode == nullptr) return nullptr;
-    if (item < rootNode->data) {
-        rootNode->left =  this->remove(rootNode->left, item);
-    } else if (item > rootNode->data) {
-        rootNode->right = this->remove(rootNode->right, item);
-    } else {
-        // if node with no or only one child
-        if (rootNode->left == nullptr) {
-            auto *temp = rootNode->right;
-            delete[] rootNode;
-            return temp;
-        } else if (rootNode->right == nullptr) {
-            auto *temp = rootNode->left;
-            delete[] rootNode;
-            return temp;
-        } else {
-            // if node have two children.
-            auto *temp = this->minimum(rootNode->right);
-            rootNode->data = temp->data;
-            rootNode->right = this->remove(rootNode->right, temp->data);
-        }
-    }
-    return rootNode;
+void BST<T>::transplant(BstNode<T> *u, BstNode<T> *v) {
+    // if u, does not have parent, then v is root.
+    if (u->parent == nullptr)
+        this->root = v;
+    // if u is left subtree of it's parent, then it must replace by v
+    else if (u == u->parent->left)
+        u->parent->left = v;
+    else
+    // If u is right subtree of it's parent, then it must replace by u.
+        u->parent->right = v;
+
+    if (v != nullptr)
+        // v and u must have same parents.
+        v->parent = u->parent;
 }
 
 template <typename T>
 void BST<T>::remove(T item)
 {
-    this->root = this->remove(this->root, item);
+    BstNode<T> *node = this->search(this->root, item);
+    if (node == nullptr) return;
+    // Case 1, tree has only one child om right,
+    if (node->left == nullptr)
+        this->transplant(node, node->right);
+    // Case 2, tree hase only one child on left.
+    else if (node->right == nullptr)
+        this->transplant(node, node->left);
+    else {
+        // case 3 | 4, tree have two children or no child.
+
+        auto *temp = this->minimum(node->right);
+        if (temp->parent != node) {
+            this->transplant(temp, temp->right);
+            temp->right = node->right;
+            temp->right->parent = node;
+        }
+        this->transplant(node, temp);
+        temp->left = node->left;
+        temp->left->parent = node;
+    }
 }

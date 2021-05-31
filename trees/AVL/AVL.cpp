@@ -97,6 +97,7 @@ void AVL<T>::insert(T data) {
 
 template<typename T>
 void AVL<T>::remove(T data) {
-    auto *node = BST<T>::remove(this->root, data);
+    auto *node =  BST<T>::search(this->root, data);
+    BST<T>::remove(data);
     this->rebalance(node);
 }
