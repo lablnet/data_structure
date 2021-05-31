@@ -241,5 +241,4 @@ public:
     void remove(T data);
 };
 
-
 #endif //DOUBLYLINKEDLIST_H_RBT_H

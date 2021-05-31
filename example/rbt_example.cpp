@@ -16,6 +16,7 @@ int main()
     std::cout << "found 4: " << tree.search(4);
     std::cout << "\tNot Found: " << tree.search(41) << std::endl;
 
+    tree.remove(5);
     std::cout << "Inorder" << std::endl;
     tree.inorder();
     std::cout << "Preorder" << std::endl;

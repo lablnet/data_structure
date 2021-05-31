@@ -54,43 +54,53 @@ void RBT<T>::insertFixup(RBTNode<T> *node) {
     // Add comments for explanations.
 
     RBTNode<T> *temp;
-    while (node->parent->color == RED) {
+    while (node != this->root && node->parent->color == RED) {
+        // Case 1: when there is violation in left tree/subtree
         if (node->parent == node->parent->parent->left) {
             temp = node->parent->parent->right;
+
+            // Case 1.a: when both temp and temp parent are red, a violation of property 4 occurs.
             if (temp->color == RED) {
                 node->parent->color = BLACK;
                 temp->color = BLACK;
                 node->parent->parent->color = RED;
                 node = node->parent->parent;
             } else {
+                // Case 1.b: if node is equal to node.parent.right then transform node to node parent.
                 if (node == node->parent->right) {
                     node = node->parent;
                     this->leftRotation(node);
                 }
+                // Case 1.c: Make the child red and parent black.
                 node->parent->color = BLACK;
                 node->parent->parent->color = RED;
                 this->rightRotation(node->parent->parent);
             }
         } else {
+            // Case 2: when there is violation in right tree/subtree
             temp = node->parent->parent->left;
+
+            // Case 2.a: when both temp and temp parent are red, a violation of property 4 occurs.
             if (temp->color == RED) {
                 node->parent->color = BLACK;
                 temp->color = BLACK;
                 node->parent->parent->color = RED;
                 node = node->parent->parent;
             } else {
+                // Case 2.b: if node is equal to node.parent.left then transform node to node parent.
                 if (node == node->parent->left) {
                     node = node->parent;
                     this->rightRotation(node);
                 }
+                // Case 2.c: Make the child red and parent black.
                 node->parent->color = BLACK;
                 node->parent->parent->color = RED;
                 this->leftRotation(node->parent->parent);
             }
         }
-        if (node == this->root) break;
     }
 
+    // root should be black.
     this->root->color = BLACK;
 }
 
@@ -266,15 +276,105 @@ T RBT<T>::predecessor(T item) {
 
 template<typename T>
 void RBT<T>::deleteFixup(RBTNode<T> *node) {
+    RBTNode<T> *w;
+    while (node != this->root && node->color == BLACK) {
+        if (node == node->parent->left) {
+            w = node->parent->right;
+            if (w->color == RED) {
+                w->color = BLACK;
+                node->parent->color = RED;
+                this->leftRotation(node->parent);
+                w = node->parent->right;
+            }
+            if (w->left->color == BLACK && w->right->color == BLACK) {
+                w->color = RED;
+                node = node->parent;
+            } else {
+                if (w->right->color == BLACK) {
+                    w->left->color = BLACK;
+                    w->color = RED;
+                    this->rightRotation(w);
+                    w = node->parent->right;
+                }
+                w->color = node->parent->color;
+                node->parent->color = BLACK;
+                w->right->color = BLACK;
+                this->leftRotation(node->parent);
+                node = this->root;
+            }
+        } else {
+            w = node->parent->left;
+            if (w->color == RED) {
+                w->color = BLACK;
+                node->parent->color = RED;
+                this->rightRotation(node->parent);
+                w = node->parent->right;
+            }
+            if (w->right->color == BLACK && w->left->color == BLACK) {
+                w->color = RED;
+                node = node->parent;
+            } else {
+                if (w->left->color == BLACK) {
+                    w->right->color = BLACK;
+                    w->color = RED;
+                    this->leftRotation(w);
+                    w = node->parent->right;
+                }
+                w->color = node->parent->color;
+                node->parent->color = BLACK;
+                w->left->color = BLACK;
+                this->rightRotation(node->parent);
+                node = this->root;
+            }
+        }
 
+        node->color = BLACK;
+    }
 }
 
 template<typename T>
 void RBT<T>::rbTransplant(RBTNode<T> *u, RBTNode<T> *v) {
-
+    if (u->parent == this->NIL)
+        this->root = v;
+    else if (u == u->parent->left)
+        u->parent->left = v;
+    else
+        u->parent->right = v;
+    v->parent = u->parent;
 }
 
 template<typename T>
 void RBT<T>::remove(T data) {
+    // Get the node we are looking for.
+    RBTNode<T> *node = this->search(this->root, data);
+    if (node == nullptr) return;
+    auto *y = node;
+    RBTNode<T> *x;
+    RBColors original_color = y->color;
 
+    // Case 1: Node has one child.
+    if (node->left == this->NIL) {
+        x = node->right;
+        this->rbTransplant(node, node->right);
+    } else if (node->right == this->NIL) {
+        x = node->left;
+        this->rbTransplant(node, node->left);
+    } else {
+        // Case 2: node has two children.
+
+        y = this->minimum(node->right);
+        original_color = y->color;
+        if (y->parent == node)
+            x->parent = y;
+        else {
+            this->rbTransplant(y, y->right);
+            y->right = node->right;
+        }
+        this->rbTransplant(node, y);
+        y->left = node->left;
+        y->left->parent = y;
+        y->color = node->color;
+    }
+    if (original_color == BLACK)
+        this->deleteFixup(x);
 }
