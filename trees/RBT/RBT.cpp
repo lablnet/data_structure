@@ -1,3 +1,6 @@
+//
+// Created by Umer on 5/30/2021.
+//
 #include "RBT.h"
 
 template<typename T>
@@ -50,9 +53,6 @@ void RBT<T>::rightRotation(RBTNode<T> *node) {
 
 template<typename T>
 void RBT<T>::insertFixup(RBTNode<T> *node) {
-    // @TODO
-    // Add comments for explanations.
-
     RBTNode<T> *temp;
     while (node != this->root && node->parent->color == RED) {
         // Case 1: when there is violation in left tree/subtree
@@ -140,6 +140,7 @@ void RBT<T>::insert(T data) {
     } else {
         y->right = temp;
     }
+    this->size++;
 
     // if temp has no parent then simply terminate the function.
     if (temp->parent == nullptr) {
@@ -167,6 +168,29 @@ RBTNode<T> *RBT<T>::search(RBTNode<T> *rootNode, T item) {
         return this->search(rootNode->left, item);
     } else if (item > rootNode->data) {
         return this->search(rootNode->right, item);
+    }
+}
+
+template<typename T>
+void RBT<T>::levelOrder() {
+    this->transverse_tree_level_order();
+}
+
+template <typename T>
+void RBT<T>::transverse_tree_level_order()
+{
+    // height: 2 . log2(N)
+    int height = 2 * std::log2(this->size + 1);
+    for (int i = 0; i < height; i++) this->levelOrder(this->root, i);
+}
+
+template<typename T>
+void RBT<T>::levelOrder(RBTNode<T> *rootNode, int i) {
+    if (rootNode == this->NIL) return;
+    if (i == 0) std::cout << rootNode->data << "\n";
+    else {
+        levelOrder(rootNode->left, i - 1);
+        levelOrder(rootNode->right, i - 1);
     }
 }
 
@@ -278,24 +302,32 @@ template<typename T>
 void RBT<T>::deleteFixup(RBTNode<T> *node) {
     RBTNode<T> *w;
     while (node != this->root && node->color == BLACK) {
+        // Case 1: when there is violation in left tree/subtree
         if (node == node->parent->left) {
             w = node->parent->right;
+
+            // Case 1.a: if node w is red.
             if (w->color == RED) {
                 w->color = BLACK;
                 node->parent->color = RED;
                 this->leftRotation(node->parent);
                 w = node->parent->right;
             }
+
+            // Same below cases applies to case 2.
+            // Case 1.b: if node w is black and both of it's children.
             if (w->left->color == BLACK && w->right->color == BLACK) {
                 w->color = RED;
                 node = node->parent;
             } else {
+                // Case 1.c: if node w is black, it's left child is red, and right child is black
                 if (w->right->color == BLACK) {
                     w->left->color = BLACK;
                     w->color = RED;
                     this->rightRotation(w);
                     w = node->parent->right;
                 }
+                // Case 1.d: if node w is black and it's right child is red.
                 w->color = node->parent->color;
                 node->parent->color = BLACK;
                 w->right->color = BLACK;
@@ -303,6 +335,7 @@ void RBT<T>::deleteFixup(RBTNode<T> *node) {
                 node = this->root;
             }
         } else {
+            // Case 1: when there is violation in right tree/subtree
             w = node->parent->left;
             if (w->color == RED) {
                 w->color = BLACK;
@@ -334,12 +367,17 @@ void RBT<T>::deleteFixup(RBTNode<T> *node) {
 
 template<typename T>
 void RBT<T>::rbTransplant(RBTNode<T> *u, RBTNode<T> *v) {
+    // if u, does not have parent, then v is root.
     if (u->parent == this->NIL)
         this->root = v;
+    // if u is left subtree of it's parent, then it must replace by v
     else if (u == u->parent->left)
         u->parent->left = v;
     else
+        // If u is right subtree of it's parent, then it must replace by u.
         u->parent->right = v;
+
+    // v and u must have same parents.
     v->parent = u->parent;
 }
 
@@ -352,7 +390,7 @@ void RBT<T>::remove(T data) {
     RBTNode<T> *x;
     RBColors original_color = y->color;
 
-    // Case 1: Node has one child.
+    // Case 1: Node has one child either left or right.
     if (node->left == this->NIL) {
         x = node->right;
         this->rbTransplant(node, node->right);
@@ -360,7 +398,7 @@ void RBT<T>::remove(T data) {
         x = node->left;
         this->rbTransplant(node, node->left);
     } else {
-        // Case 2: node has two children.
+        // Case 2: node has two children or no child.
 
         y = this->minimum(node->right);
         original_color = y->color;
