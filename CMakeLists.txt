@@ -17,3 +17,4 @@ add_executable(AVL trees/BST/BST.h trees/BST/BST.cpp trees/AVL/AVL.h trees/AVL/A
 add_executable(HashTable vendor/VariadicTable.h HashTable/HashUtility.h HashTable/HashTable.h HashTable/HashTable.cpp example/hash_table_example.cpp)
 add_executable(Dict vendor/VariadicTable.h HashTable/HashTable.h HashTable/HashTable.cpp Applications/Dict/Dict.cpp Applications/Dict/Dict.h example/dict_example.cpp)
 add_executable(PyList Env.h Applications/List/List.h Applications/List/List.cpp example/_list_example.cpp)
+add_executable(RBT trees/RBT/RBT.h trees/RBT/RBT.cpp example/rbt_example.cpp)
