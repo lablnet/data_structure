@@ -9,6 +9,7 @@
 #include <sstream>
 #include <string>
 
+// utility function for MSVC++
 template<class T>
 std::string toString(const T &value) {
     std::ostringstream os;

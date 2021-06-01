@@ -26,6 +26,8 @@ add_executable(LinearSearch example/list_example.cpp Algorithm/Searching/LinearS
 add_executable(BinarySearch example/binary_search_example.cpp Algorithm/Searching/BinarySearch.cpp)
 add_executable(BubbleSort example/bubble_sort_example.cpp Algorithm/Sorting/BubbleSort.cpp)
 add_executable(InsertionSort example/insertion_sort_example.cpp Algorithm/Sorting/insertionSort.cpp)
+add_executable(MergeSort example/merge_sort_example.cpp Algorithm/Sorting/merge_sort.cpp)
+add_executable(BST trees/BST/BST.h trees/BST/BST.cpp example/bst_example.cpp)
 add_executable(AVL trees/BST/BST.h trees/BST/BST.cpp trees/AVL/AVL.h trees/AVL/AVL.cpp example/avl_example.cpp)
 add_executable(HashTable vendor/VariadicTable.h HashTable/HashUtility.h HashTable/HashTable.h HashTable/HashTable.cpp example/hash_table_example.cpp)
 add_executable(Dict vendor/VariadicTable.h HashTable/HashTable.h HashTable/HashTable.cpp Applications/Dict/Dict.cpp Applications/Dict/Dict.h example/dict_example.cpp)
