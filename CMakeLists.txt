@@ -3,9 +3,19 @@ project(Data_Structure)
 
 set(CMAKE_CXX_STANDARD 20)
 
-set(tool_dest "bin")
-set(lib_dest "lib")
+# place binaries and libraries according to GNU standards
+include(GNUInstallDirs)
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_LIBDIR})
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_LIBDIR})
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_BINDIR})
 
+# we cannot analyse results without gcov
+find_program(GCOV_PATH gcov)
+if(NOT GCOV_PATH)
+    message(FATAL_ERROR "Code coverage analysis requires gcov!")
+endif()
+
+enable_testing()
 add_subdirectory(tests)
 
 add_executable(List example/list_example.cpp List/List.h List/SinglyLinkedList.h List/SinglyLinkedList.cpp  List/DoublyLinkedList.h List/DoublyLinkedList.cpp)
