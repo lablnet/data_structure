@@ -6,6 +6,16 @@
 #define DOUBLYLINKEDLIST_H_HASHUTILITY_H
 
 #include <typeinfo>
+#include <sstream>
+#include <string>
+
+// utility function for MSVC++
+template<class T>
+std::string toString(const T &value) {
+    std::ostringstream os;
+    os << value;
+    return os.str();
+}
 
 namespace lablnet {
 

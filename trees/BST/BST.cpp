@@ -123,6 +123,7 @@ BstNode<T> *BST<T>::search(BstNode<T> *rootNode, T item) {
     } else if (item > rootNode->data) {
         return this->search(rootNode->right, item);
     }
+    return nullptr;
 }
 
 template<typename T>
