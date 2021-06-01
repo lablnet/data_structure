@@ -1,3 +1,5 @@
+[![tests](https://github.com/lablnet/Data_Structure/actions/workflows/tests.yml/badge.svg)](https://github.com/lablnet/Data_Structure/actions/workflows/tests.yml)
+
 # Data Structures and Algorithms
 Several data structures and Algorithms implementations in C++
 
