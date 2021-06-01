@@ -16,7 +16,7 @@ if(NOT GCOV_PATH)
 endif()
 
 enable_testing()
-add_subdirectory(tests)
+add_subdirectory(test)
 
 add_executable(List example/list_example.cpp List/List.h List/SinglyLinkedList.h List/SinglyLinkedList.cpp  List/DoublyLinkedList.h List/DoublyLinkedList.cpp)
 add_executable(Heap example/heap_example.cpp trees/Heap/Heap.h trees/Heap/Heap.cpp)

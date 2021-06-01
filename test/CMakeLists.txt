@@ -12,11 +12,13 @@ add_executable(
         unit_tests
         binary_search_test.cpp
 )
+
 target_link_libraries(unit_tests
         PRIVATE
-        tests
+        example
         gtest_main
         )
+
 # automatic discovery of unit tests
 include(GoogleTest)
 gtest_discover_tests(unit_tests
