@@ -12,7 +12,18 @@ Several data structures and Algorithms implementations in C++
 3. - [x] AVL Balance Tree
 4. - [x] Hash Tables
 5. - [x] Red Black Trees
-
+5. - [ ] Graphs
+     - [x] Adjacency list (Representation of Graph)
+     - [ ] Graph Searching Algorithms
+          - [ ] breadth first search
+          - [ ] Depth first search
+          - [ ] A* search
+     - [ ] Graph Sorting Algorithms
+          - [ ] Topological Sort
+     - [ ] Shortest Path
+          - [ ] Dijkstra
+     
+     
 ### Algorithms
 1. - [x] Searching
      - [x] Linear Search
