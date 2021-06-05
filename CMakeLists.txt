@@ -34,3 +34,4 @@ add_executable(Dict vendor/VariadicTable.h HashTable/HashTable.h HashTable/HashT
 add_executable(PyList Env.h Applications/List/List.h Applications/List/List.cpp example/_list_example.cpp)
 add_executable(RBT trees/RBT/RBT.h trees/RBT/RBT.cpp example/rbt_example.cpp)
 add_executable(AdjacencyListGraph Graph/Graphs/AdjacencyListGraph/AdjacencyListGraph.h Graph/Graphs/AdjacencyListGraph/AdjacencyListVertex.h example/graph_example.cpp)
+add_executable(AdjacencyMatrixGraph Graph/Graphs/AdjacencyMatrixGraph/AdjacencyMatrixGraph.h example/adjacency_matrix_graph_example.cpp)
