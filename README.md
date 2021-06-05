@@ -13,7 +13,8 @@ Several data structures and Algorithms implementations in C++
 4. - [x] Hash Tables
 5. - [x] Red Black Trees
 5. - [ ] Graphs
-     - [x] Adjacency list (Representation of Graph)
+     - [x] Adjacency List (Representation of Graph)
+     - [x] Adjacency Matrix (Representation of Graph)
      - [ ] Graph Searching Algorithms
           - [ ] breadth first search
           - [ ] Depth first search
