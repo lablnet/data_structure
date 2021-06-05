@@ -5,10 +5,10 @@
 #ifndef DOUBLYLINKEDLIST_H_GRAPH_H
 #define DOUBLYLINKEDLIST_H_GRAPH_H
 
-#include "Vertex.h"
+#include "AdjacencyListVertex.h"
 
-class Graph {
-    std::map<int, Vertex> vertList;
+class AdjacencyListGraph {
+    std::map<int, AdjacencyListVertex> vertList;
     int numVertices = 0;
 
 public:
@@ -21,9 +21,9 @@ public:
      * @since 1.0.0
      * @return Vetrex
      */
-    Vertex addVertex(int key) {
+    AdjacencyListVertex addVertex(int key) {
         this->numVertices++;
-        Vertex vertex = Vertex(key);
+        AdjacencyListVertex vertex = AdjacencyListVertex(key);
         this->vertList[key] = vertex;
         return vertex;
     }
@@ -36,8 +36,8 @@ public:
      * @since 1.0.0
      * @return <*>Vetrex
      */
-    Vertex *getVertex(int n) {
-        for (std::map<int, Vertex>::iterator it = vertList.begin(); it != vertList.end(); ++it) {
+    AdjacencyListVertex *getVertex(int n) {
+        for (std::map<int, AdjacencyListVertex>::iterator it = vertList.begin(); it != vertList.end(); ++it) {
             if (it->first == n) {
                 return &vertList[n];
             } else {
@@ -55,7 +55,7 @@ public:
      * @return bool
      */
     bool contains(int n) {
-        for (std::map<int, Vertex>::iterator it = vertList.begin(); it != vertList.end(); ++it) {
+        for (std::map<int, AdjacencyListVertex>::iterator it = vertList.begin(); it != vertList.end(); ++it) {
             if (it->first == n) {
                 return true;
             }
@@ -91,7 +91,7 @@ public:
     std::vector<int> getVertices() {
         std::vector<int> verts;
 
-        for (std::map<int, Vertex>::iterator it = vertList.begin(); it != vertList.end();  ++it) {
+        for (std::map<int, AdjacencyListVertex>::iterator it = vertList.begin(); it != vertList.end();  ++it) {
             verts.push_back(it->first);
         }
         return verts;
@@ -102,7 +102,7 @@ public:
      *
      * @since 1.0.0
      */
-    friend std::ostream &operator<<(std::ostream &stream, Graph &g) {
+    friend std::ostream &operator<<(std::ostream &stream, AdjacencyListGraph &g) {
         for (unsigned int i = 0; i < g.vertList.size(); i++) {
             stream << g.vertList[i];
         }

@@ -1,9 +1,9 @@
 #include <iostream>
-#include "../Graphs/Graph/Graph.h"
+#include "../Graph/Graphs/AdjacencyListGraph/AdjacencyListGraph.h"
 
 int main()
 {
-    Graph g;
+    AdjacencyListGraph g;
 
     for (int i = 0; i < 3; i++) {
         g.addVertex(i);

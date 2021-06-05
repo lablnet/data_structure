@@ -9,20 +9,20 @@
 #include <vector>
 #include <ostream>
 
-class Vertex {
+class AdjacencyListVertex {
     int id;
     std::map<int, int> connectedTo;
 public:
 
     // default
-    Vertex() {}
+    AdjacencyListVertex() {}
 
     /**
      * Constructor.
      *
      * @since 1.0.0
      */
-    Vertex(int key) {
+    AdjacencyListVertex(int key) {
         this->id = key;
     }
 
@@ -78,7 +78,7 @@ public:
      *
      * @since 1.0.0
      */
-    friend std::ostream &operator<<(std::ostream &os, Vertex &vert) {
+    friend std::ostream &operator<<(std::ostream &os, AdjacencyListVertex &vert) {
         std::vector<int> connects = vert.getConnections();
         for (unsigned int i = 0; i < connects.size(); i++) {
             os << "( " << vert.id << " , " << connects[i] << " ) \n";
