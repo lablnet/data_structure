@@ -11,6 +11,7 @@ FetchContent_MakeAvailable(gtest)
 add_executable(
         unit_tests
         binary_search_test.cpp
+        linear_search_test.cpp
 )
 
 target_link_libraries(unit_tests
