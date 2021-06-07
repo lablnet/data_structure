@@ -13,8 +13,3 @@ TEST(AlgoTest, B_Search) {
     }
     ASSERT_EQ(3, binary_search(list, 3));
 }
-
-int main(int argc, char **argv) {
-    ::testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS();
-}
