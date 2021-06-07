@@ -6,7 +6,7 @@
 #include <vector>
 #include <gtest/gtest.h>
 
-TEST(AlgoTest, B_Search) {
+TEST(AlgoTest, BinarySearch) {
     std::vector<int> list;
     for (int i = 0; i <= 10; i++) {
         list.push_back(i);

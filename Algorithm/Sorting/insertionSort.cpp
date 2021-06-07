@@ -7,7 +7,7 @@
 template<typename T>
 std::vector<T> insertion_sort(std::vector<T> arr)
 {
-    for (int i = 1; i <= arr.size(); i++) {
+    for (int i = 1; i < arr.size(); i++) {
         T key = arr[i];
         int j = i - 1;
         while (j >= 0  && key < arr[j]) {
