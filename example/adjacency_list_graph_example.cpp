@@ -3,7 +3,7 @@
 
 int main()
 {
-    AdjacencyListGraph g;
+    AdjacencyListGraph<int, int> g;
 
     for (int i = 0; i < 3; i++) {
         g.addVertex(i);

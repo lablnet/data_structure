@@ -9,9 +9,10 @@
 #include <vector>
 #include <ostream>
 
+template <typename K, typename V>
 class AdjacencyListVertex {
-    int id;
-    std::map<int, int> connectedTo;
+    K id;
+    std::map<K, V> connectedTo;
 public:
 
     // default
@@ -22,7 +23,7 @@ public:
      *
      * @since 1.0.0
      */
-    AdjacencyListVertex(int key) {
+    AdjacencyListVertex(K key) {
         this->id = key;
     }
 
@@ -35,7 +36,7 @@ public:
      * @since 1.0.0
      * @return void
      */
-    void addNeighbor(int nbr, int weight = 0) {
+    void addNeighbor(K nbr, V weight = 0) {
         this->connectedTo[nbr] = weight;
     }
 
@@ -43,19 +44,19 @@ public:
      * Get id.
      *
      * @since 1.0.0
-     * @param int
+     * @param <K>
      */
-    int getId() { return this->id;}
+    K getId() { return this->id;}
 
     /**
      * Get all connections.
      *
      * @since 1.0.0
-     * @return vector<int>
+     * @return vector<K>
      */
-    std::vector<int> getConnections() {
-        std::vector<int> keys;
-        for (std::map<int, int>::iterator it = connectedTo.begin(); it != connectedTo.end(); ++it) {
+    std::vector<K> getConnections() {
+        std::vector<K> keys;
+        for (typename std::map<K, V>::iterator it = connectedTo.begin(); it != connectedTo.end(); ++it) {
             keys.push_back(it->first);
         }
         return keys;
@@ -69,7 +70,7 @@ public:
      * @since 1.0.0
      * @return int
      */
-    int getWeight(int nbr) {
+    V getWeight(K nbr) {
         return connectedTo[nbr];
     }
 
@@ -79,7 +80,7 @@ public:
      * @since 1.0.0
      */
     friend std::ostream &operator<<(std::ostream &os, AdjacencyListVertex &vert) {
-        std::vector<int> connects = vert.getConnections();
+        std::vector<K> connects = vert.getConnections();
         for (unsigned int i = 0; i < connects.size(); i++) {
             os << "( " << vert.id << " , " << connects[i] << " ) \n";
         }

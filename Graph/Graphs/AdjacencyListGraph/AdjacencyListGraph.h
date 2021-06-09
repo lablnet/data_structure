@@ -7,8 +7,9 @@
 
 #include "AdjacencyListVertex.h"
 
+template <typename K, typename V>
 class AdjacencyListGraph {
-    std::map<int, AdjacencyListVertex> vertList;
+    std::map<K, AdjacencyListVertex<K, V>> vertList;
     int numVertices = 0;
 
 public:
@@ -21,9 +22,9 @@ public:
      * @since 1.0.0
      * @return Vetrex
      */
-    AdjacencyListVertex addVertex(int key) {
+    AdjacencyListVertex<K, V> addVertex(K key) {
         this->numVertices++;
-        AdjacencyListVertex vertex = AdjacencyListVertex(key);
+        AdjacencyListVertex<K, V> vertex = AdjacencyListVertex<K, V>(key);
         this->vertList[key] = vertex;
         return vertex;
     }
@@ -36,8 +37,8 @@ public:
      * @since 1.0.0
      * @return <*>Vetrex
      */
-    AdjacencyListVertex *getVertex(int n) {
-        for (std::map<int, AdjacencyListVertex>::iterator it = vertList.begin(); it != vertList.end(); ++it) {
+    AdjacencyListVertex<K, V> *getVertex(K n) {
+        for (typename std::map<K, AdjacencyListVertex<K, V>>::iterator it = vertList.begin(); it != vertList.end(); ++it) {
             if (it->first == n) {
                 return &vertList[n];
             } else {
@@ -54,8 +55,8 @@ public:
      * @since 1.0.0
      * @return bool
      */
-    bool contains(int n) {
-        for (std::map<int, AdjacencyListVertex>::iterator it = vertList.begin(); it != vertList.end(); ++it) {
+    bool contains(K n) {
+        for (typename std::map<K, AdjacencyListVertex<K, V>>::iterator it = vertList.begin(); it != vertList.end(); ++it) {
             if (it->first == n) {
                 return true;
             }
@@ -73,7 +74,7 @@ public:
      * @since 1.0.0
      * @return void
      */
-    void addEdge(int f, int t, int weight = 0)
+    void addEdge(K f, K t, V weight = 0)
     {
         if (!this->contains(f)) {
             this->addVertex(f);
@@ -88,10 +89,10 @@ public:
      * @since 1.0.0
      * @return vector<int>
      */
-    std::vector<int> getVertices() {
-        std::vector<int> verts;
+    std::vector<K> getVertices() {
+        std::vector<K> verts;
 
-        for (std::map<int, AdjacencyListVertex>::iterator it = vertList.begin(); it != vertList.end();  ++it) {
+        for (typename std::map<K, AdjacencyListVertex<K, V>>::iterator it = vertList.begin(); it != vertList.end();  ++it) {
             verts.push_back(it->first);
         }
         return verts;
