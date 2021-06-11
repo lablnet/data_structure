@@ -12,7 +12,6 @@ DFSGraph BFS(DFSVertex *start, DFSGraph g)
     start->status = UNVISITED;
     Queue<DFSVertex*> vertex;
     vertex.enqueue(start);
-    std::cout << "Test";
     while (vertex.size() > 0) {
         DFSVertex *current = vertex.dequeue();
         for (int i = 0; i < current->getConnections().size(); i++) {

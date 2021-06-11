@@ -8,9 +8,8 @@
 #include <iostream>
 #include "DFSGraph.h"
 
-DFSGraph dfs(DFSVertex *start, DFSGraph g)
+DFSGraph DFS(DFSVertex *start, DFSGraph g)
 {
-    // code goes here..
     return g;
 }
 
