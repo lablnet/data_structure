@@ -35,3 +35,4 @@ add_executable(PyList Env.h Applications/List/List.h Applications/List/List.cpp 
 add_executable(RBT trees/RBT/RBT.h trees/RBT/RBT.cpp example/rbt_example.cpp)
 add_executable(AdjacencyListGraph Graph/Graphs/AdjacencyListGraph/AdjacencyListGraph.h Graph/Graphs/AdjacencyListGraph/AdjacencyListVertex.h example/adjacency_list_graph_example.cpp)
 add_executable(AdjacencyMatrixGraph Graph/Graphs/AdjacencyMatrixGraph/AdjacencyMatrixGraph.h example/adjacency_matrix_graph_example.cpp)
+add_executable(DFS Graph/Graphs/AdjacencyMatrixGraph/AdjacencyMatrixGraph.h Graph/Algorithms/DFS/DFSGraph.h Graph/Algorithms/DFS/DFSVertex.h example/dfs_example.cpp)
