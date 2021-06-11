@@ -7,9 +7,9 @@
 
 #include "AdjacencyListVertex.h"
 
-template <typename K, typename V>
+template <typename K, typename V, typename Z>
 class AdjacencyListGraph {
-    std::map<K, AdjacencyListVertex<K, V>> vertList;
+    std::map<K, V> vertList;
     int numVertices = 0;
 
 public:
@@ -22,9 +22,9 @@ public:
      * @since 1.0.0
      * @return Vetrex
      */
-    AdjacencyListVertex<K, V> addVertex(K key) {
+    V addVertex(K key) {
         this->numVertices++;
-        AdjacencyListVertex<K, V> vertex = AdjacencyListVertex<K, V>(key);
+        V vertex = V(key);
         this->vertList[key] = vertex;
         return vertex;
     }
@@ -37,8 +37,8 @@ public:
      * @since 1.0.0
      * @return <*>Vetrex
      */
-    AdjacencyListVertex<K, V> *getVertex(K n) {
-        for (typename std::map<K, AdjacencyListVertex<K, V>>::iterator it = vertList.begin(); it != vertList.end(); ++it) {
+    V *getVertex(K n) {
+        for (typename std::map<K, V>::iterator it = vertList.begin(); it != vertList.end(); ++it) {
             if (it->first == n) {
                 return &vertList[n];
             } else {
@@ -56,7 +56,7 @@ public:
      * @return bool
      */
     bool contains(K n) {
-        for (typename std::map<K, AdjacencyListVertex<K, V>>::iterator it = vertList.begin(); it != vertList.end(); ++it) {
+        for (typename std::map<K, V>::iterator it = vertList.begin(); it != vertList.end(); ++it) {
             if (it->first == n) {
                 return true;
             }
@@ -74,7 +74,7 @@ public:
      * @since 1.0.0
      * @return void
      */
-    void addEdge(K f, K t, V weight = 0)
+    void addEdge(K f, K t, Z weight = 0)
     {
         if (!this->contains(f)) {
             this->addVertex(f);
@@ -92,7 +92,7 @@ public:
     std::vector<K> getVertices() {
         std::vector<K> verts;
 
-        for (typename std::map<K, AdjacencyListVertex<K, V>>::iterator it = vertList.begin(); it != vertList.end();  ++it) {
+        for (typename std::map<K, V>::iterator it = vertList.begin(); it != vertList.end();  ++it) {
             verts.push_back(it->first);
         }
         return verts;
