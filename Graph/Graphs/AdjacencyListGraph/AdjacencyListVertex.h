@@ -11,6 +11,7 @@
 
 template <typename K, typename V>
 class AdjacencyListVertex {
+protected:
     K id;
     std::map<K, V> connectedTo;
 public:

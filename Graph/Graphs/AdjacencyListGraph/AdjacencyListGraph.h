@@ -9,10 +9,9 @@
 
 template <typename K, typename V, typename Z>
 class AdjacencyListGraph {
+public:
     std::map<K, V> vertList;
     int numVertices = 0;
-
-public:
 
     /**
      * Add Vertex to graph.
