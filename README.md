@@ -33,8 +33,8 @@ Run tests
      - [x] Adjacency List (Representation of Graph)  
      - [x] Adjacency Matrix (Representation of Graph)  
      - [ ] Graph Searching Algorithms  
-       - [ ] breadth first search  
-       - [ ] Depth first search  
+       - [x] Breadth first search  
+       - [x] Depth first search  
        - [ ] A* search  
      - [ ] Graph Sorting Algorithms  
        - [ ] Topological Sort  

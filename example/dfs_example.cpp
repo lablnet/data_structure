@@ -27,9 +27,9 @@ int main()
     g.addEdge(6, 2, 1);
     g.addEdge(6, 5, 1);
 
-    //DFSGraph g1 = DFS(g.getVertex(0), g);
+    DFSGraph g1 = DFS(g.getVertex(0), g);
 
-    //std::cout << g1;
+    std::cout << g1;
 
     std::cout << std::endl;
     return 0;

@@ -24,7 +24,7 @@ void Stack<T>::display()
 }
 
 template<typename T>
-T Stack<T>::size()
+int Stack<T>::size()
 {
     return list.length();
 }

@@ -37,3 +37,4 @@ add_executable(AdjacencyListGraph Graph/Graphs/AdjacencyListGraph/AdjacencyListG
 add_executable(AdjacencyMatrixGraph Graph/Graphs/AdjacencyMatrixGraph/AdjacencyMatrixGraph.h example/adjacency_matrix_graph_example.cpp)
 add_executable(DFS Graph/Graphs/AdjacencyMatrixGraph/AdjacencyMatrixGraph.h Graph/Algorithms/DFS/DFSGraph.h Graph/Algorithms/DFS/DFSVertex.h Graph/Algorithms/DFS/DFS.h example/dfs_example.cpp)
 add_executable(BFS Graph/Graphs/AdjacencyMatrixGraph/AdjacencyMatrixGraph.h Graph/Algorithms/DFS/DFSGraph.h Graph/Algorithms/DFS/DFSVertex.h Graph/Algorithms/BFS/BFS.h example/bfs_example.cpp)
+

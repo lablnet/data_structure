@@ -6,6 +6,7 @@
 #define DOUBLYLINKEDLIST_H_BFS_H
 
 #include "../DFS/DFSGraph.h"
+#include "../../../Queue/Queue.cpp"
 
 DFSGraph BFS(DFSVertex *start, DFSGraph g)
 {

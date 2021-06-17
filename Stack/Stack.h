@@ -48,7 +48,7 @@ class Stack {
          * Get the size of Stack
          * @return <int>
          */
-        T size();
+        int size();
 
         /**
          * Display the stack items.

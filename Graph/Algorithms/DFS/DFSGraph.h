@@ -6,7 +6,6 @@
 #define DOUBLYLINKEDLIST_H_DFSGRAPH_H
 
 #include "../../Graphs/AdjacencyListGraph/AdjacencyListGraph.h"
-#include "../../../Queue/Queue.cpp"
 #include "DFSVertex.h"
 
 class DFSGraph : public AdjacencyListGraph<int, DFSVertex, int> {
