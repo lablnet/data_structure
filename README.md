@@ -25,11 +25,12 @@ Run tests
 1. - [x] List  
      - [x] Singly Linked List  
      - [x]  Doubly Linked List  
-2. - [x] Binary Search Tree  
-3. - [x] AVL Balance Tree  
-4. - [x] Hash Tables  
-5. - [x] Red Black Trees  
-5. - [ ] Graphs  
+2. - [x] Stack and Queue  
+3. - [x] Binary Search Tree  
+5. - [x] AVL Balance Tree  
+6. - [x] Hash Tables  
+7. - [x] Red Black Trees 
+8. - [ ] Graphs  
      - [x] Adjacency List (Representation of Graph)  
      - [x] Adjacency Matrix (Representation of Graph)  
      - [ ] Graph Searching Algorithms  
